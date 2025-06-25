@@ -1,0 +1,70 @@
+@import url(../../../styles.less);
+.head-main {
+    background: url(../../../assets/image/background_blue_pattern.jpg);
+    position: absolute;
+    .fr();
+    font-weight: 600;
+    padding: 0 5%;
+    height: 60px;
+    color: #F0F8FF;
+    border-bottom: 1px solid rgba(240, 248, 255, 0.3);
+    width: 100%;
+    .name {
+        font-family: 'Agency FB','sans-serif';
+        font-size: 30px;
+        position: relative;
+    }
+    .list {
+        &-ul {
+            .fcc();
+            height: 60px;
+            &-li {
+                .fcc();
+                .noSelect();
+                margin: 0 10px;
+                font-size: 16px;
+                cursor: pointer;
+                padding-bottom: 6px;
+                transform: translateY(3px);
+                background: linear-gradient(to right, #A7C5EB, #A7C5EB) no-repeat right bottom;
+                background-size: 0 3px;
+                transition: background-size 0.3s;
+                &:hover {
+                    background-position: left bottom;
+                    background-size: 100% 3px;
+                }
+            }
+
+            &-li:nth-child(1)::before {
+                content: url(../../../assets/icons/home.svg)'\00A0';
+                height: 20px;
+            }
+
+            &-li:nth-child(2)::before {
+                content: url(../../../assets/icons/定位.svg)'\00A0';
+                height: 20px;
+            }
+
+            &-li:nth-child(3)::before {
+                content: url(../../../assets/icons/留言.svg)'\00A0';
+                height: 20px;
+            }
+
+            &-li:nth-child(4)::before {
+                content: url(../../../assets/icons/相册.svg)'\00A0';
+                height: 20px;
+            }
+
+            &-li:nth-child(5)::before {
+                content: url(../../../assets/icons/about.svg)'\00A0';
+                height: 20px;
+            }
+        }
+    }
+}
+.btn-icon-co{
+    
+}
+.navbar-toggler{
+    color: aliceblue;
+}

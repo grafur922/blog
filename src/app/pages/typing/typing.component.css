@@ -1,0 +1,106 @@
+.typingMain {
+  min-height: 100vh;
+}
+.typingMain .fill .background {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  z-index: -1;
+}
+.typingMain .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.typingMain .container .dashboard .origin {
+  display: flex;
+}
+.typingMain .container .dashboard .origin-li {
+  padding: 10px;
+}
+.typingMain .container .sentence {
+  width: 60%;
+  height: 150px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  position: relative;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: blur(8px);
+}
+.typingMain .container .sentence:focus-within {
+  border-color: #a5a5a5;
+}
+.typingMain .container .sentence:hover {
+  border-color: #a5a5a5;
+}
+.typingMain .container .sentence .mask {
+  color: #282640;
+  position: absolute;
+  font-size: 32px;
+  font-weight: 600;
+  word-wrap: break-word;
+  word-break: keep-all;
+  padding: 0 10px;
+  height: 100%;
+  width: 100%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
+  caret-color: transparent;
+  resize: none;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  border-radius: 8px;
+  z-index: 99;
+  display: flex;
+  flex-wrap: wrap;
+}
+.typingMain .container .sentence .mask::after {
+  content: '';
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background-color: black;
+  vertical-align: text-bottom;
+  animation: none !important;
+}
+.typingMain .container .sentence .fontEffect {
+  color: #282640;
+  position: absolute;
+  font-size: 32px;
+  font-weight: 600;
+  word-wrap: break-word;
+  word-break: keep-all;
+  padding: 0 10px;
+  height: 100%;
+  width: 100%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
+  caret-color: transparent;
+  resize: none;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  z-index: -1;
+  color: #a5a5a5;
+}
+.text-style-global {
+  color: #282640;
+  position: absolute;
+  font-size: 32px;
+  font-weight: 600;
+  word-wrap: break-word;
+  word-break: keep-all;
+  padding: 0 10px;
+  height: 100%;
+  width: 100%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
+  caret-color: transparent;
+  resize: none;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}

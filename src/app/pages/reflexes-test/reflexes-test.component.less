@@ -1,0 +1,32 @@
+@import url(../../../styles.less);
+.visible{
+    display: block !important;
+}
+.reflexesMain{
+    height: 100vh;
+    // overflow: hidden;
+    // transition: all 0.3;
+    .fcc();
+    flex-direction: column;
+    .circle{
+        background-color:#83D9C8; //#D98394
+        .fcc();
+        height: 100vw;
+        width: 100vw;
+        // margin-top: -40vh;
+        .f30();
+        cursor: pointer;
+    }
+    .tip{
+        margin-top: -10%;
+        .f30();
+        margin-bottom: 20px;
+    }
+    .restart{
+        margin-top: 20px;
+        cursor: pointer;
+        width: 150px;
+        height: 80px;
+        display: none;
+    }
+}

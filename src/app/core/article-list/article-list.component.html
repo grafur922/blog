@@ -1,0 +1,7 @@
+<div class="articleListMain">
+    @for (item of formData; track $index) {
+        <div class="container">
+            <article-card [formData]="item" [index]="$index" (click)="view(item.articleId===undefined?'0':item.articleId)"></article-card>
+        </div>
+    }
+</div>

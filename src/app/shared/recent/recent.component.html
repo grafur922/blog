@@ -1,0 +1,10 @@
+<div class="recentMain">
+    <cardTmp [iconName]="iconName">
+        <div class="card-title">最近</div>
+        <ul class="card-ul">
+            @for (item of formData; track $index) {
+                <li class="card-ul-li">{{item.title}}</li>
+            }
+        </ul>
+    </cardTmp>
+</div>

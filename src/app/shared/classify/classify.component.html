@@ -1,0 +1,14 @@
+<div class="classifyMain">
+    <cardTmp [iconName]="iconName">
+        <div class="card-title">
+            分类
+        </div>
+        <ul class="card-ul">
+            @for (item of data.getData(); track $index) {
+                <li class="card-ul-li">
+                    {{item.classifyName}}
+                </li>
+            }
+        </ul>
+    </cardTmp>
+</div>

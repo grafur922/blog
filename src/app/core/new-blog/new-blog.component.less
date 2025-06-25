@@ -1,0 +1,190 @@
+@import url(../../../styles.less);
+
+.p-2 {
+    padding: 20px;
+}
+
+.p-3 {
+    padding: 30px;
+}
+
+.p-4 {
+    padding: 40px;
+}
+
+.l-label {
+    .f18();
+    opacity: 0.6;
+}
+
+.titleInput {
+    width: 100%;
+    .f20();
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    transition: all 0.2s;
+    // text-indent: 20px;
+    padding: 5px 20px;
+
+    &:focus {
+        border-bottom: 1px solid rgba(0, 0, 0, 1);
+        outline: none;
+    }
+
+    &::placeholder {
+        color: rgba(0, 0, 0, 0.2);
+    }
+}
+
+.newBlogMain {
+    .fc();
+    position: relative;
+    min-height: 100vh; // 确保主容器至少有一个视口高度
+
+    .workspace {
+        display: flex;
+
+        // justify-content: flex-end;
+        .left {
+            width: 30%;
+            position: sticky;
+            top: 0;
+            align-self: flex-start;
+            height: 100vh;
+
+            .fill {
+                height: calc(100vh - 30px);
+                background-color: #FFCA9B;
+
+                .fillTitle {
+                    .f30();
+                    .fw();
+                    color: #fff;
+                }
+
+                .cat {
+                    width: 100%;
+                    padding-top: 25%;
+                }
+            }
+        }
+
+        .right {
+            width: 70%;
+
+            &-ul {
+                li {
+                    margin-bottom: 10px;
+
+                    .contentInput {
+                        .titleInput();
+                        min-height: 100px;
+                        height: auto;
+                        resize: none;
+                        overflow: hidden;
+                        line-height: 1.5;
+                    }
+                }
+
+                .textInput {}
+
+                &-title {
+                    .f30();
+                    .fw();
+                }
+            }
+
+            .btngroup {
+                .fb();
+
+                .select {
+                    display: flex;
+                    align-items: center;
+
+                    .mat-form-field {
+                        border-color: #FFCA9B;
+                        width: 130px;
+                        margin-right: 20px;
+
+                        mat-label {
+                            font-size: 100%;
+                        }
+                    }
+                }
+
+                .group {
+                    display: flex;
+                    align-items: start;
+
+                    button {
+                        width: 130px;
+                        height: 55px;
+                        margin-left: 20px;
+                        .f16();
+                    }
+                }
+            }
+
+            .preview {
+                margin-top: 20px;
+
+                // height: 300px;
+                &-text {
+                    margin-bottom: 20px;
+                    .f16();
+                }
+            }
+
+            .upload-file {
+                display: flex;
+                margin-top: 20px;
+                justify-content: flex-end;
+                .btn-add {
+                    .plus {
+                        .f30();
+                    }
+                }
+
+                .tip {
+                    height: auto;
+                    background-color: #D7E3FF;
+                    .fcc();
+                    margin-left: 10px;
+                    border-radius: 15%;
+                }
+
+
+            }
+
+        }
+    }
+
+    .statebar {
+        min-height: 30px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: #E0E4E9;
+        display: flex;
+        flex-direction: column;
+
+        .status-info {
+            padding: 0 10px;
+            font-size: 12px;
+            line-height: 30px;
+            color: #333;
+        }
+
+        .progress {
+            width: 0%;
+            height: 3px;
+            background-color: @primary;
+            transition: width 0.2s ease-in-out;
+        }
+    }
+}
+
+mat-option {
+    padding-left: 10px;
+}

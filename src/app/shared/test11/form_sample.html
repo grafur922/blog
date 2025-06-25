@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Sample</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body>
+    <form name="myForm" action="display_form_data.html" method="GET" target="_blank" onsubmit="return validateForm()">
+        <label for="username">用户名:</label>
+        <input type="text" id="username" name="username">
+        <br>
+        <label for="password">密码:</label>
+        <input type="password" id="password" name="password">
+        <br>
+        <label for="email">电子邮件:</label>
+        <input type="email" id="email" name="email">
+        <br>
+        <input type="submit" value="提交">
+    </form>
+    <script>
+        function validateForm() {
+            const form = document.forms["myForm"];
+            const username = form["username"].value;
+            const password = form["password"].value;
+            const email = form["email"].value;
+
+            if (username === "" || password === "" || email === "") {
+                alert("所有字段必须填写！");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

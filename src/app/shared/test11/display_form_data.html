@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Form Data</title>
+</head>
+<body>
+    <h1>表单提交的数据</h1>
+    <p>用户名: <span id="username"></span></p>
+    <p>密码: <span id="password"></span></p>
+    <p>电子邮件: <span id="email"></span></p>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        document.getElementById('username').textContent = urlParams.get('username');
+        document.getElementById('password').textContent = urlParams.get('password');
+        document.getElementById('email').textContent = urlParams.get('email');
+    </script>
+</body>
+</html>

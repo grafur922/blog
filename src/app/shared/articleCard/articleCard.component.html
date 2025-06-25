@@ -1,0 +1,36 @@
+<div class="articleCardMain" (click)="print()" [class.dright]="isrtl">
+    @if(preview()){
+        <div class="coverImg" (click)="loadImg()">
+            <div class="cover">添加图片</div>
+            <img class="imgdetail" src="../../../assets/image/mixkit-work-desk-with-a-computer-books-coffee-and-snacks-398-original.png" alt="">
+        </div>
+    }
+    @if(!preview()){
+        <div class="coverImg d-none d-md-block">
+            <!-- <div class="cover"></div> -->
+            <img class="imgdetail" [src]="formData()?.img" alt=""> 
+        </div>
+    }
+    
+    <div class="rightArticle">
+        <div class="title">
+            {{formData()?.title}}
+        </div>
+        <div class="time">
+            <span class="timedetail">
+                <img src="../../../assets/icons/time.svg" alt="">
+                <!-- {{date.getFullYear()}}/{{date.getMonth()+1}}/{{date.getDate()}} -->
+                 {{formData()?.createTime?.substring(0,4)??date.getFullYear()}}/{{formData()?.createTime?.substring(5,7)??date.getMonth()+1}}/{{formData()?.createTime?.substring(8,10)??date.getDate()}}
+            </span>
+            <span class="classify">
+                <img src="../../../assets/icons/分类.svg" alt="">
+                {{formData()?.classifyName??'阿吉尔侬的花束'}}
+            </span>
+            <span class=""></span>
+        </div>
+        <div class="maintext">
+            {{formData()?.content}}
+        </div>
+    </div>
+    <input type="file" placeholder="loadFile" class="inputLoad">
+</div>

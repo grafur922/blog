@@ -1,0 +1,22 @@
+<div class="typingMain">
+    <div class="fill">
+        <img src="https://www.keybr.com/assets/66d2c3ed5b116f38.svg" alt="壁纸图片" class="background">
+    </div>
+    <div class="container">
+        <div class="dashboard">
+            <ul class="origin">
+                <li class="origin-li">总时间：{{data.time | date:'mm:ss'}}</li>
+                <li class="origin-li">速度(cpm)：{{data.speed}}</li>
+                <li class="origin-li">正确率：{{data.accuracy}}%</li>
+            </ul>
+        </div>
+
+        <div class="sentence" (click)="focus()" cdkDragBoundary=".typingMain" cdkDrag>
+            <div class="mask" (keydown)="handleInput($event)" (mousedown)="$event.stopPropagation()"
+                contenteditable="true">
+                <div></div>
+            </div>
+            <textarea placeholder="none" name="fontEffect" class="fontEffect" id="fontEffect">{{words}}</textarea>
+        </div>
+    </div>
+</div>

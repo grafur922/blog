@@ -1,0 +1,100 @@
+@import url(../../../styles.less);
+@media only screen and (max-width:768px) {
+    .articleCardMain{
+        height: 200px !important;
+    }
+}
+.articleCardMain {
+    .inputLoad{
+        display: none;
+    }
+    background-color: #fff;
+    height: 260px;
+    border-radius: 10px;
+    display: flex;
+    // justify-content: flex-end;
+    // direction: rtl;
+    .shadow();
+    overflow: hidden; 
+    .coverImg {
+        width: 40%; 
+        flex: 0 0 40%;
+        position: relative;
+        .imgdetail {
+            .imgCover();
+        }
+        .cover{
+            position:absolute;
+            width: 100%;
+            height:100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)); // Adjust the gradient color
+            .fcc();
+            color: #fff;
+            transition: all 0.3s;
+            opacity: 0;
+            cursor: pointer;
+        }
+        transition: all 0.3s;
+        &:hover {
+            transform: scale(1.1);
+            .cover {
+                opacity: 1;
+            }
+        }
+    }
+    .rightArticle {
+        direction: ltr;
+        // display: flex;
+        // flex-direction: column;
+        width: 100%;
+        padding: 30px;
+        .title {
+            font-size: 26px;
+            cursor: pointer;
+            width: fit-content;
+            &:hover{
+                color: @primary;
+            }
+        }
+        
+        .time {
+            margin: 15px 0;
+            color: #8a8a8a;
+            display: flex;
+            // opacity: 0.4;
+            // margin-left: 6px;
+            .timedetail {
+            }
+            .timedetail::after {
+                content: "|";
+                margin: 0 10px;
+            }
+            .classify{
+                cursor: pointer;
+                &:hover{
+                    color: @primary;
+                }
+            }
+            .timedetail,.classify{
+                font-size: 13px;
+                .fcc();
+                img {
+                    margin-right: 2px;
+                    width: 14px;
+                }
+            }
+        }
+
+        .maintext {
+            margin-top: 10px;
+            display: -webkit-box;
+            // display: box;
+            line-clamp: 2;
+            -webkit-line-clamp: 2; 
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            .f18();
+        }
+    }
+}

@@ -1,0 +1,39 @@
+@import url(../../../styles.less);
+
+.tools-container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    padding: 20px 20px 0;
+    cursor: pointer;
+
+    .toolCard {
+        place-self: center;
+        margin: 10px 0;
+        width: 350px;
+
+        .topfill {
+            background-color: #a5c66d;
+            height: 180px;
+        }
+
+        .text {
+            border: 1px solid rgb(214, 214, 214);
+            height: 120px;
+            padding: 10px 20px;
+            .f16();
+            transition: all 0.2s;
+
+            .begin {
+                .f14();
+                position: relative;
+                top: 40px;
+                color: #2A8F99;
+            }
+        }
+
+        &:hover .text {
+            background-color: #e6f2f7;
+        }
+    }
+}

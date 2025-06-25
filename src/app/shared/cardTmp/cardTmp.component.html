@@ -1,0 +1,16 @@
+<div class="cardTmpMain">
+    <div class="cardTitle">
+        <div class="cardTitle-icon">
+            <!-- <nz-icon [nzType]="nzTypeName" [nzSpin]="rotate" nzTheme="outline" /> -->
+            <!-- <span class="material-symbols-outlined">
+                search
+            </span> -->
+            <i [class]="'fa-solid '+iconName"></i>
+            <ng-content select=".card-icon"></ng-content>
+        </div>
+        <div class="cardTitle-title">
+            <ng-content select=".card-title"></ng-content>
+        </div>
+    </div>
+    <ng-content></ng-content>
+</div>

@@ -1,0 +1,71 @@
+<div class="newBlogMain">
+    <div class="workspace">
+        <div class="left">
+            <div class="fill">
+                <div class="fillTitle p-3">
+                    <p>Hello Aqua!</p>
+                    <img class="cat"
+                        src="../../../assets/image/mixkit-cat-tangled-up-in-christmas-lights-475-original.png" alt=""
+                        srcset="">
+                </div>
+            </div>
+        </div>
+        <div class="right p-3">
+            <ul class="right-ul">
+                <li class="right-ul-title">新建贴文</li>
+                <li class="l-label">标题</li>
+                <li class="textInput">
+                    <input (click)="judgeDefaultTitle()" [(ngModel)]="formData.title" class="titleInput" #title
+                        placeholder="你的标题" type="text" maxlength="30" />
+                </li>
+                <li class="l-label">描述</li>
+                <li>
+                    <textarea #contentInput (input)="autoResize($event)" (click)="updateCursorPosition($event)"
+                        (keyup)="updateCursorPosition($event)" class="contentInput" placeholder="描述"
+                        [(ngModel)]="formData.content"></textarea>
+                </li>
+                <div class="btngroup">
+                    <div class="select">
+                        <mat-form-field class="mat-form-field">
+                            <mat-label>选择分类</mat-label>
+                            <mat-select [(value)]="formData.classifyName">
+                                <mat-option value="1">无</mat-option>
+                                <!-- <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option> -->
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field class="mat-form-field">
+                            <mat-label>谁可见</mat-label>
+                            <mat-select [(value)]="visble">
+                                <mat-option value="public">公开</mat-option>
+                                <mat-option value="private">私密</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="group">
+                        <button mat-stroked-button color="primary">返回</button>
+                        <button (click)="submit()" mat-stroked-button color="primary">发布</button>
+                    </div>
+                </div>
+                <div class="preview">
+                    <p class="preview-text">预览:</p>
+                    <article-card [formData]="formData" [imgData]="imgData" [preview]="true"></article-card>
+                </div>
+                <div class="upload-file" >
+                    <!-- {{formData.markdown}} -->
+                    <button class="btn-add"  mat-fab color="warn" aria-label="upload markdown file" (click)="upLoadMd()">
+                        <div class="plus">+</div>
+                    </button>
+                    <!-- <div class="tip">点击上传文件</div> -->
+                </div>
+                <input type="file" #upFile style="display: none;"  placeholder="上传markdown文件">
+            </ul>
+        </div>
+    </div>
+    <div class="statebar">
+        <div class="status-info">
+            当前: {{currentLineLength}}/{{maxLineLength}}
+        </div>
+        <div class="progress">
+        </div>
+    </div>
+</div>

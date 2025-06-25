@@ -1,0 +1,52 @@
+@import url(../../../styles.less);
+
+.footerMain {
+    margin-top: 10px;
+
+    .bgcontainer {
+        width: 100%;
+        background: url(../../../assets/image/background_blue_pattern.jpg);
+        min-height: 200px;
+        display: flex;
+        padding: 40px 10%;
+
+        .start {
+            a {
+                color: #fff;
+            }
+            display: flex;
+            flex: auto 1 1;
+            align-items: flex-end;
+        }
+
+        .end {
+            display: flex;
+            cursor: pointer;
+            align-items: flex-end;
+            .button-group {
+                display: flex;
+                
+                width: 350px;
+                .button {
+                    margin: 0 5px;
+                    width: 40px;
+                    height: 40px;
+                    .fcc();
+                    border-radius: 20px;
+                    background-color: #fff;
+                    transition: all 0.2s;
+                    &:hover{
+                        width: 100px;
+                    }
+                }
+            }
+
+            // a{
+            //     padding: 0 5px;
+            // }
+            // flex: auto 1 1;
+            // .fee();
+        }
+    }
+
+}

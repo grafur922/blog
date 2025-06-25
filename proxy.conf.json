@@ -1,0 +1,11 @@
+{
+    "/api": {
+      "target": "http://14.103.154.193:8088",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": "/api"
+      }
+    }
+  } 
