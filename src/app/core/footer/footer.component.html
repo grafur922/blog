@@ -4,8 +4,6 @@
             <a href="https://beian.miit.gov.cn/">湘ICP备2025114945号-1</a>
         </div>
         <div class="end">
-            <!-- <a href=""><span class="iconfont icon-QQ-circle-fill"></span></a>
-            <a href="mailto:SL3103433522@163.com"><span class="iconfont icon-youxiang"></span></a> -->
             <div class="button-group">
 
                 <div class="button">
@@ -23,7 +21,7 @@
                         <i class="fa-brands fa-github"></i>
                     </div>
                 </div>
-                <div class="button">
+                <div class="button" (click)="open(messageModal)">
                     <div class="icon">
                         <i class="fa-solid fa-envelope"></i>
                     </div>
@@ -32,5 +30,25 @@
             </div>
         </div>
     </div>
-
 </div>
+
+<ng-template #messageModal let-modal>
+    <div class="container p-4">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">留言</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                    <label for="message-text" class="col-form-label">您的留言:</label>
+                    <textarea class="form-control" id="message-text" rows="5" [(ngModel)]="message"
+                        name="message"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer my-2">
+            <button type="button" class="btn btn-primary p-2" (click)="modal.close('Save click')">发送</button>
+        </div>
+    </div>
+</ng-template>
