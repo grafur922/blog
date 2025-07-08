@@ -15,14 +15,28 @@
                 <li class="right-ul-title">新建贴文</li>
                 <li class="l-label">标题</li>
                 <li class="textInput">
-                    <input (click)="judgeDefaultTitle()" [(ngModel)]="formData.title" class="titleInput" #title
-                        placeholder="你的标题" type="text" maxlength="30" />
+                    <mat-form-field style="width: 100%;" appearance="outline">
+                        <mat-label>标题</mat-label>
+                        <input (click)="judgeDefaultTitle()" matInput [(ngModel)]="formData.title" class="" #title
+                            placeholder="你的标题" type="text" maxlength="30" required />
+                        @if (formControl.hasError('required')) {
+                        <mat-error>标题不能为空</mat-error>
+                        }
+                    </mat-form-field>
+
                 </li>
                 <li class="l-label">描述</li>
                 <li>
-                    <textarea #contentInput (input)="autoResize($event)" (click)="updateCursorPosition($event)"
-                        (keyup)="updateCursorPosition($event)" class="contentInput" placeholder="描述"
-                        [(ngModel)]="formData.content"></textarea>
+                    <mat-form-field style="width: 100%;height: 150px;" appearance="outline">
+                        <mat-label>描述</mat-label>
+                        <textarea #contentInput (input)="autoResize($event)" matInput
+                            (click)="updateCursorPosition($event)" (keyup)="updateCursorPosition($event)" class=""
+                            placeholder="文章描述" [(ngModel)]="formData.content" required #description></textarea>
+                        @if (formControl.hasError('required')) {
+                        <mat-error>描述不能为空</mat-error>
+                        }
+                    </mat-form-field>
+
                 </li>
                 <div class="btngroup">
                     <div class="select">
@@ -43,21 +57,21 @@
                     </div>
                     <div class="group">
                         <button mat-stroked-button color="primary">返回</button>
-                        <button (click)="submit()" mat-stroked-button color="primary">发布</button>
+                        <button (click)="submit()" mat-stroked-button color="primary" [disabled]="!(description.value!=''&&title.value!='')">发布</button>
                     </div>
                 </div>
                 <div class="preview">
                     <p class="preview-text">预览:</p>
                     <article-card [formData]="formData" [imgData]="imgData" [preview]="true"></article-card>
                 </div>
-                <div class="upload-file" >
+                <div class="upload-file">
                     <!-- {{formData.markdown}} -->
-                    <button class="btn-add"  mat-fab color="warn" aria-label="upload markdown file" (click)="upLoadMd()">
+                    <button class="btn-add" mat-fab color="warn" aria-label="upload markdown file" (click)="upLoadMd()">
                         <div class="plus">+</div>
                     </button>
                     <!-- <div class="tip">点击上传文件</div> -->
                 </div>
-                <input type="file" #upFile style="display: none;"  placeholder="上传markdown文件">
+                <input type="file" #upFile style="display: none;" placeholder="上传markdown文件">
             </ul>
         </div>
     </div>

@@ -49,6 +49,10 @@
   white-space: pre;
 }
 .curChar {
-  background-color: #4a8eab;
+  background-color: #4a8eab !important;
+  color: #fff;
+}
+.incorrect {
+  background-color: hotpink;
   color: #fff;
 }

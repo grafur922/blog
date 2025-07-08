@@ -7,9 +7,8 @@ import { classify } from '../../interfaces/classifyData';
 export class ClassifyDataService {
   private classifyData=new BehaviorSubject<classify[] | null>(null)
   classifyData$=this.classifyData.asObservable()
-
   constructor() { }
-
+  
   setData(data:classify[] | null){
     this.classifyData.next(data)
   }
@@ -17,5 +16,4 @@ export class ClassifyDataService {
     return this.classifyData.getValue()
   }
 
-  
 }

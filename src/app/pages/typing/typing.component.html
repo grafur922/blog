@@ -23,7 +23,7 @@
           <div>已输入</div>
         </div>
         <div class="state-li py-3 my-3 px-5 d-none d-md-block rounded">
-          <div class="state-fs">{{stats.errors}}</div>
+          <div class="state-fs">{{inputState.incorrect}}</div>
           <div>错误</div>
         </div>
         <div class="state-li py-3 my-3 px-5 d-none d-md-block rounded">
@@ -37,7 +37,7 @@
       @for (l of line; track $index) {
         <div class="line">
           @for (char of l; track $index) {
-            <span class="each-char">{{char.char}}</span>
+            <span class="each-char" [class.incorrect]="char.state=='incorrect'">{{char.char}}</span>
           }
         </div>
       }

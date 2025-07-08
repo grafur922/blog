@@ -10,11 +10,12 @@ interface CharObject {
 }
 
 interface InputState {
-  curPos: number,
-  row: number,
-  col: number,
-  correct: number,
+  curPos: number
+  row: number
+  col: number
+  correct: number
   incorrect: number
+  [prop:string]: unknown
 }
 
 type Line = CharObject[];
@@ -32,13 +33,14 @@ export class TypingComponent implements OnInit {
   originalText = "A textarea does not expose its line layout to JavaScript, which makes it very difficult to determine where the visual line breaks are. To solve this, we can render each character as an individual element, giving us full control over the layout and styling. This method allows us to precisely track the user's input and manage the state of each character, including simulating a cursor and handling line breaks exactly as we want. Press space at the end of a line to see the effect.";
   words = this.originalText.split(' ')
   line: Line[] = []
-
+  
   inputState: InputState = {
     curPos: 0,
     row: 0,
     col: 0,
     correct: 0,
-    incorrect: 0
+    incorrect: 0,
+    lastError:-1
   }
   spanRef: HTMLCollectionOf<Element> | null = null
   stats: Stats = {
@@ -46,7 +48,8 @@ export class TypingComponent implements OnInit {
     accuracy: 0,
     typedChars: 0,
     errors: 0,
-    startTime: null
+    startTime: null,
+    
   }
   constructor() {
 
@@ -104,7 +107,14 @@ export class TypingComponent implements OnInit {
       }
       this.spanRef?.item(is.curPos)?.classList.add('curChar')
     }
-    
+    else{
+      if(is['lastError']!==is.curPos){
+        is.incorrect+=1
+      }
+      is['lastError']=is.curPos
+      console.log(`curpos is ${is.curPos}`);
+      this.line[is.row][is.col].state='incorrect'
+    }
     // console.log(key);
     
   }

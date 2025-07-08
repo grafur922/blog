@@ -3,9 +3,9 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select'
 import { MatButtonModule } from '@angular/material/button'
 import { articleCardComponent } from "../../shared/articleCard/articleCard.component";
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule ,Validators} from '@angular/forms';
 import { imgData } from '../../shared/interfaces/imgData';
-import { MatIcon } from '@angular/material/icon';
+import {MatInputModule,MatLabel} from '@angular/material/input'
 import {
   MatDialog,
   MatDialogRef,
@@ -21,13 +21,15 @@ import { ArticleFormData } from '../../shared/interfaces/articleFormData';
 import { LoggerService } from '../../shared/services/Logger/logger.service';
 @Component({
   selector: 'app-new-blog',
-  imports: [MatFormFieldModule, FormsModule, MatSelectModule, MatButtonModule, articleCardComponent,MatIcon],
+  imports: [MatFormFieldModule, FormsModule, MatSelectModule, MatButtonModule, articleCardComponent,MatInputModule,MatLabel],
   templateUrl: './new-blog.component.html',
   styleUrl: './new-blog.component.less'
+  
 })
 export class NewBlogComponent implements OnInit {
-  
   constructor(public dialog: MatDialog,public router:Router) {}
+  
+  formControl=new FormControl('',[Validators.required])
   complete:Boolean=true
   @ViewChild('contentInput') contentInput: any;
   wordCount: number = 0;
@@ -118,10 +120,16 @@ export class NewBlogComponent implements OnInit {
     document.querySelector('.progress').style.width = `${this.linepercent}%`;
   }
   submit() {
+    
+    
     if(this.tmpFileMd){
-      this.uploadFile(this.tmpFileMd,'markdown').catch(err=>{
-        this.Logger.error(err)
-        return 
+      this.uploadFile(this.tmpFileMd,'markdown').then(res=>{
+        console.log(res);
+        this.formData.markdown=res.data
+      }).catch(res=>{
+        console.log(res);
+        return
+        
       })
     }
     if(this.imgData){
@@ -129,6 +137,8 @@ export class NewBlogComponent implements OnInit {
         if(res.code===1){
           this.formData.img=res.data
           // this.formData.img=res
+          console.log(this.formData);
+          
           axios.post('/api/addBlog',this.formData).then(res=>{
             console.log(res);
             this.turnToHome()
