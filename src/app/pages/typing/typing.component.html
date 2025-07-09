@@ -1,15 +1,19 @@
 <div class="typing-main ">
   <nav class="tp-nav d-flex justify-content-between">
-    <div class="left p-4 "><h4>Typing Master</h4></div>
+    <div class="left p-4 ">
+      <h4>Typing Master</h4>
+    </div>
     <div class="right p-4">
-      <button type="button" class="btn btn-outline-light mx-2 d-none d-sm-inline-flex align-items-center caps"><div class="circle me-2 "></div><span>Caps Lock</span></button>
+      <button type="button" class="btn btn-outline-light mx-2 d-none d-sm-inline-flex align-items-center caps">
+        <div class="circle me-2 "></div><span>Caps Lock</span>
+      </button>
       <button type="button" class="btn btn-outline-light mx-2">全屏</button>
-      <button type="button" class="btn btn-outline-light mx-2">重置</button>
+      <button type="button" class="btn btn-outline-light mx-2" (click)="reset()">重置</button>
     </div>
   </nav>
   <div class="content container">
     <div class="state-group">
-      <div class="state-ul d-flex justify-content-around"> 
+      <div class="state-ul d-flex justify-content-around">
         <div class="state-li py-3 my-3 px-5 rounded">
           <div class="state-fs">{{stats.cpm}}</div>
           <div>CPM</div>
@@ -18,7 +22,7 @@
           <div class="state-fs">{{accuracy}}%</div>
           <div>正确率</div>
         </div>
-        <div class="state-li py-3 my-3 px-5 rounded" >
+        <div class="state-li py-3 my-3 px-5 rounded">
           <div class="state-fs">{{inputState.curPos}}</div>
           <div>已输入</div>
         </div>
@@ -27,21 +31,22 @@
           <div>错误</div>
         </div>
         <div class="state-li py-3 my-3 px-5 d-none d-md-block rounded">
-          <div class="state-fs">0</div>
+          <div class="state-fs">{{elapsedTime}}s</div>
           <div>时间</div>
         </div>
       </div>
     </div>
     <hr class="border-primary">
-    <div class="input-area px-4 py-2" tabindex="0" (keydown)="handleKeyDown($event)" cdkDrag cdkDragBoundary=".typing-main">
+    <div class="input-area px-4 py-2" tabindex="0" (keydown)="handleKeyDown($event)" cdkDrag
+      cdkDragBoundary=".typing-main">
       @for (l of line; track $index) {
-        <div class="line">
-          @for (char of l; track $index) {
-            <span class="each-char" [class.incorrect]="char.state=='incorrect'">{{char.char}}</span>
-          }
-        </div>
+      <div class="line">
+        @for (char of l; track $index) {
+        <span class="each-char" [class.incorrect]="char.state=='incorrect'">{{char.char}}</span>
+        }
+      </div>
       }
     </div>
-    
+
   </div>
 </div>
