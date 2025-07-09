@@ -8,13 +8,14 @@
 .typing-main .tp-nav .right .caps .circle {
   width: 10px;
   height: 10px;
-  background-color: white;
+  background-color: #F8F9FA;
   border-radius: 100%;
 }
 .typing-main .content .state-group .state-ul .state-li {
   background-color: #a5c8e2;
   color: #fff;
   font-weight: 700;
+  min-width: 162px;
 }
 .typing-main .content .state-group .state-ul .state-li > div {
   display: flex;

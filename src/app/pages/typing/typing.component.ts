@@ -54,7 +54,14 @@ export class TypingComponent implements OnInit {
   constructor() {
 
   }
+  get accuracy(): number {
+    if (!this.inputState || !this.inputState.curPos) {
+      return 100;
+    }
 
+    const percentage = (this.inputState.curPos - this.inputState.incorrect) / this.inputState.curPos * 100;
+    return Math.floor(percentage);
+  }
   ngOnInit(): void {
     let tLine = ''
     let tCharObject: CharObject[] = []
