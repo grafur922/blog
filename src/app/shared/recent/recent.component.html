@@ -3,7 +3,7 @@
         <div class="card-title">最近</div>
         <ul class="card-ul">
             @for (item of formData; track $index) {
-                <li class="card-ul-li">{{item.title}}</li>
+                <li class="card-ul-li" (click)="navService.view(item.articleId===undefined?'0':item.articleId)">{{item.title}}</li>
             }
         </ul>
     </cardTmp>

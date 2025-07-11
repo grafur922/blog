@@ -5,9 +5,10 @@ import { articleCardComponent } from '../../shared/articleCard/articleCard.compo
 import { DataService } from '../../shared/services/data.service';
 import { LoggerService } from '../../shared/services/Logger/logger.service';
 import {Router} from '@angular/router'
+import { NavToViewService } from '../../shared/services/navToView/nav-to-view.service';
 @Component({
   selector: 'app-article-list',
-  imports: [articleCardComponent],
+  imports: [articleCardComponent,],
   templateUrl: './article-list.component.html',
   styleUrl: './article-list.component.less'
 })
@@ -15,6 +16,7 @@ export class ArticleListComponent implements OnInit{
   constructor(private dataService:DataService,private router:Router) { 
 
   }
+  navService=inject(NavToViewService)
   formData:ArticleFormData[]=[]
   Logger=inject(LoggerService)
   ngOnInit(): void {

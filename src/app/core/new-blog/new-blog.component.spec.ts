@@ -19,5 +19,5 @@ describe('NewBlogComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
+  }); 
 });

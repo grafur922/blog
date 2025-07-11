@@ -2,7 +2,14 @@
     <div class="head">
         <app-header></app-header>
     </div>
-    <div class="view-area container">
+    <div class="view-area container d-flex">
         <zero-md [src]="url"></zero-md>
+        <div class="ms-5 d-none d-xl-block ">
+            <recent></recent>
+            <classify></classify>
+        </div>
+    </div>
+    <div class="footer">
+        <app-footer></app-footer>
     </div>
 </div>
