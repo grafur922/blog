@@ -135,7 +135,6 @@ a {
 }
 .head-main {
   background: url(../../../assets/image/background_blue_pattern.jpg);
-  position: absolute;
   display: flex;
   justify-content: space-between;
   align-items: center;
