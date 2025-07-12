@@ -8,6 +8,7 @@ import { TypingComponent } from './pages/typing/typing.component';
 import { MarkdownViewerComponent } from './pages/markdown-viewer/markdown-viewer.component';
 import { StyleTestComponent } from './pages/style-test/style-test.component';
 import { FreeCellComponent } from './pages/free-cell/free-cell.component';
+import { ClassifyViewerComponent } from './pages/classify-viewer/classify-viewer.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full',component:HomeComponent },
@@ -19,5 +20,6 @@ export const routes: Routes = [
   {path:'view/:id',component:MarkdownViewerComponent},
   {path:'style-test',component:StyleTestComponent},
   {path:'tools/free-cell',component:FreeCellComponent},
+  {path:'classify-detail',component:ClassifyViewerComponent},
   {path:'**',component:PageNotFoundComponent},
 ];
