@@ -5,7 +5,7 @@
         </div>
         <ul class="card-ul">
             @for (item of data.getData(); track $index) {
-                <li class="card-ul-li">
+                <li class="card-ul-li" routerLink="/classify-detail" [fragment]="item.classifyId+''">
                     {{item.classifyName}}
                 </li>
             }
