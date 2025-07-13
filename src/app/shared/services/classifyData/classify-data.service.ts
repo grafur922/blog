@@ -21,5 +21,6 @@ export class ClassifyDataService {
         this.classifyData.next(null);
       });
     }
+    
   }
 }
