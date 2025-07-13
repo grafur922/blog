@@ -1,31 +1,30 @@
 import {Component, inject, OnInit} from '@angular/core'
 import { cardTmpComponent } from "../cardTmp/cardTmp.component";
-import axios from 'axios'
+import { AsyncPipe } from '@angular/common';
+import { Observable } from 'rxjs';
 import { ClassifyDataService } from '../../shared/services/classifyData/classify-data.service';
 import { LoggerService } from '../services/Logger/logger.service';
 import { Router , RouterModule} from '@angular/router';
+import { classify } from '../interfaces/classifyData';
 @Component({
     selector:'classify',
     templateUrl:'./classify.component.html',
     styleUrl:'./classify.component.less',
-    imports: [cardTmpComponent,RouterModule]
+    imports: [cardTmpComponent,RouterModule,AsyncPipe]
 })
 export class ClassifyComponent implements OnInit{
-    constructor(public data:ClassifyDataService){}
+    classifyData$: Observable<classify[] | null>
+    constructor(public data:ClassifyDataService,private classifyDataService: ClassifyDataService){
+        this.classifyData$ = this.classifyDataService.classifyData$;
+    }
     iconName:string='fa-list'
     router=inject(Router)
     Logger=inject(LoggerService)
     ngOnInit(): void {
-        axios.get('/api/getClassify').then(res=>{
-            // res.data.data.forEach((item:any)=>{
-            //     this.data.setData(item)
-            // })
-            this.data.setData(res.data.data)
-            // console.log(res.data.data);
-            
-            this.Logger.log(this.data.getData())
-            
-        })
+        this.classifyDataService.loadData();
+        console.log(this.classifyData$);
+        
+        
     }
     
 }

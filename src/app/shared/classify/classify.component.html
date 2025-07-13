@@ -4,7 +4,7 @@
             分类
         </div>
         <ul class="card-ul">
-            @for (item of data.getData(); track $index) {
+            @for (item of classifyData$ | async; track $index) {
                 <li class="card-ul-li" routerLink="/classify-detail" [fragment]="item.classifyId+''">
                     {{item.classifyName}}
                 </li>
