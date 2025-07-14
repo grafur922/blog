@@ -2,7 +2,7 @@
 <div class="classifyViewerMain container">
     <mat-accordion>
         @for (item of classifyData$ | async; track $index) {
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="my-3">
+        <mat-expansion-panel  (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="my-3" >
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     {{item.classifyName}}
@@ -13,7 +13,7 @@
             </mat-expansion-panel-header>
             @for (aItem of articleData$ | async; track $index) {
                 @if (aItem.classifyId==item.classifyId) {
-                    <p class="f-list-li">{{aItem.title}}</p>
+                    <p class="f-list-li" (click)="navService.view(aItem.articleId===undefined?'0':aItem.articleId)">{{aItem.title}}</p>
                 }
             }
         </mat-expansion-panel>

@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
             let name = e.getAttribute('name') ?? ''
             if (this.map.has(name)) {
                 let na=this.map.get(name)
-                this.Logger.log(na)
+                // this.Logger.log(na)
                 
                 if (na?.enable !== false) {
                     e.addEventListener('click', () => {
