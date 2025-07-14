@@ -1,48 +1,58 @@
 // @primary: #1890FF;
 @primary: #FFCA9B;
-@fgray:#5f5f5f;
+@fgray: #5f5f5f;
 
-a{
+a {
     text-decoration: none !important;
 }
+
 mat-icon {
-  font-variation-settings: 'wght' 300;
+    font-variation-settings: 'wght' 300;
 }
 
 
-.fb{
+.fb {
     display: flex;
     justify-content: space-between;
 }
+
 .card-ul {
     .card-ul-li {
-        cursor: pointer;
-        .f14();
-        color: @fgray;
-        line-height: 1.8;
-        list-style: disc;
-        margin-left: 20px;
-
-        &:hover {
-            color: @primary;
-            z-index: 1;
-        }
+        .f-list-li();
     }
 
 }
+
+.f-list-li {
+    cursor: pointer;
+    .f14();
+    color: @fgray;
+    line-height: 1.8;
+    list-style: disc;
+    margin-left: 20px;
+
+    &:hover {
+        color: @primary;
+        z-index: 1;
+    }
+}
+
 .fr {
     .fb();
     align-items: center;
 }
-.fee{
+
+.fee {
     display: flex;
-            justify-content: flex-end;
-            align-items: flex-end;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
-.fc{
+
+.fc {
     display: flex;
     flex-direction: column;
 }
+
 .fac {
     display: flex;
     justify-content: space-around;
@@ -62,10 +72,11 @@ mat-icon {
     align-items: center;
 }
 
-.dright{
+.dright {
     direction: rtl;
 }
-.dleft{
+
+.dleft {
     direction: ltr;
 }
 
@@ -79,6 +90,7 @@ mat-icon {
     align-items: center;
 
 }
+
 .fcoa {
     .fc();
     justify-content: space-around;
@@ -92,46 +104,59 @@ mat-icon {
     border-radius: 10px;
     .shadow();
 }
-.shadow{
+
+.shadow {
     box-shadow: 0 0 10px rgb(229, 229, 229);
     transition: box-shadow 0.3s;
+
     &:hover {
         box-shadow: 0 0 10px rgb(209, 209, 209);
     }
 }
-.imgCover{
+
+.imgCover {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.f36{
+
+.f36 {
     font-size: 36px;
 }
-.f30{
+
+.f30 {
     font-size: 30px;
 }
-.f24{
+
+.f24 {
     font-size: 24px;
 }
-.f22{
+
+.f22 {
     font-size: 22px;
 }
-.f20{
+
+.f20 {
     font-size: 20px;
 }
-.f18{
+
+.f18 {
     font-size: 18px;
 }
-.f16{
+
+.f16 {
     font-size: 16px;
 }
-.f14{
+
+.f14 {
     font-size: 14px;
 }
-.f12{
+
+.f12 {
     font-size: 12px;
 }
-.fw{
+
+.fw {
     font-weight: 500;
 }
 
@@ -142,7 +167,7 @@ mat-icon {
 
 @width: 100%;
 
-* {
+body,li,ul {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
