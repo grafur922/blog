@@ -6,32 +6,26 @@ import { DataService } from '../../shared/services/data.service';
 import { LoggerService } from '../../shared/services/Logger/logger.service';
 import {Router} from '@angular/router'
 import { NavToViewService } from '../../shared/services/navToView/nav-to-view.service';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 @Component({
   selector: 'app-article-list',
-  imports: [articleCardComponent,],
+  imports: [articleCardComponent,AsyncPipe],
   templateUrl: './article-list.component.html',
   styleUrl: './article-list.component.less'
 })
 export class ArticleListComponent implements OnInit{
+  articleData$:Observable<ArticleFormData[]| null>
   constructor(private dataService:DataService,private router:Router) { 
-
+    this.articleData$=this.dataService.data$
   }
   navService=inject(NavToViewService)
   formData:ArticleFormData[]=[]
   Logger=inject(LoggerService)
   ngOnInit(): void {
-    axios.get('/api/getAll').then(res=>{
-      if(res.data.code===1){
-        this.formData=res.data.data
-        this.dataService.setdata(this.formData)
-        this.Logger.log(res.data)
-      }
-      else{
-        console.log(res.data.msg)
-      }
-    }).catch(err=>{
-      console.log(err)
-    })
+    this.dataService.loadData()
+    console.log(this.articleData$);
+    
   }
   view(id:string){
     this.router.navigate(['/view/'+id])

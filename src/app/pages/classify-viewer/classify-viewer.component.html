@@ -11,8 +11,11 @@
                     <!-- Currently I am {{panelOpenState ? 'open' : 'closed'}} -->
                 </mat-panel-description>
             </mat-expansion-panel-header>
-            <p>I'm visible because I am </p>
-            
+            @for (aItem of articleData$ | async; track $index) {
+                @if (aItem.classifyId==item.classifyId) {
+                    <p class="f-list-li">{{aItem.title}}</p>
+                }
+            }
         </mat-expansion-panel>
         }
 

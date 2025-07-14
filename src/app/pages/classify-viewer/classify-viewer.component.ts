@@ -6,6 +6,7 @@ import { AsyncPipe } from '@angular/common';
 import {Observable} from 'rxjs'
 import { DataService } from '../../shared/services/data.service';
 import { classify } from '../../shared/interfaces/classifyData';
+import { ArticleFormData } from '../../shared/interfaces/articleFormData';
 @Component({
   selector: 'app-classify-viewer',
   imports: [MatExpansionModule, HeaderComponent,AsyncPipe],
@@ -13,14 +14,16 @@ import { classify } from '../../shared/interfaces/classifyData';
   styleUrl: './classify-viewer.component.less'
 })
 export class ClassifyViewerComponent implements OnInit{
-  classifyData$: Observable<classify[] | null>
-  // articleData$=inject(DataService).data$
-  constructor(private classifyDataService:ClassifyDataService){
+  classifyData$: Observable<classify[] | null>;
+  articleData$: Observable<ArticleFormData[] | null>;
+  constructor(private classifyDataService:ClassifyDataService,private articleDataService:DataService){
     this.classifyData$=this.classifyDataService.classifyData$
+    this.articleData$=this.articleDataService.data$
   }
   ngOnInit(): void {
     this.classifyDataService.loadData()
-    // console.log(this.articleData$);
+    this.articleDataService.loadData()
+    console.log(this.articleData$);
     console.log(this.classifyData$);
     
   }
