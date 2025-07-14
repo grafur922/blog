@@ -33,7 +33,9 @@ export class ClassifyViewerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.expandedClassifyName = this.route.snapshot.fragment;
+    setTimeout(() => {
+      this.expandedClassifyName = this.route.snapshot.fragment;
+    }, 300);
     this.classifyDataService.loadData();
     this.articleDataService.loadData();
   }
