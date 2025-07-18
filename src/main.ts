@@ -6,7 +6,6 @@ import { AppComponent } from './app/app.component';
 import gsap from 'gsap';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 
-// 注册 GSAP 插件
 gsap.registerPlugin(ScrambleTextPlugin);
 
 bootstrapApplication(AppComponent, appConfig)
