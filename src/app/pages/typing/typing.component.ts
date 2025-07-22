@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CdkDrag } from '@angular/cdk/drag-drop';
 import { Stats } from '../../shared/interfaces/Stats';
 
-// 类型定义
+
 type CharState = 'pending' | 'correct' | 'incorrect';
 
 interface CharObject {
@@ -110,6 +110,8 @@ export class TypingComponent implements OnInit, OnDestroy {
   }
 
   handleKeyDown(event: KeyboardEvent): void {
+    console.log(this.line);
+    
     let is = this.inputState;
     if (this.isModifierKey(event.key)) {
       return;
@@ -129,8 +131,11 @@ export class TypingComponent implements OnInit, OnDestroy {
     }
 
     if (key === this.line[is.row][is.col].char) {
-      this.spanRef?.item(is.curPos)?.classList.remove('curChar', 'incorrect');
-      this.line[is.row][is.col].state = 'correct';
+      this.spanRef?.item(is.curPos)?.classList.remove('curChar');
+      if(this.line[is.row][is.col].state!=='incorrect'){
+        this.line[is.row][is.col].state = 'correct';
+      }
+      
       is.curPos++;
       is.col++;
 
@@ -153,11 +158,11 @@ export class TypingComponent implements OnInit, OnDestroy {
       }
       is['lastError'] = is.curPos;
       this.line[is.row][is.col].state = 'incorrect';
-      this.spanRef?.item(is.curPos)?.classList.add('incorrect');
+      // this.spanRef?.item(is.curPos)?.classList.add('incorrect');
     }
     this.stats.typedChars = is.curPos;
   }
-
+  
   private startTimer(): void {
     this.stats.startTime = new Date(); 
 
