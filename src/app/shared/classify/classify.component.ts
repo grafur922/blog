@@ -23,8 +23,6 @@ export class ClassifyComponent implements OnInit{
     ngOnInit(): void {
         this.classifyDataService.loadData();
         console.log(this.classifyData$);
-        
-        
     }
     
 }

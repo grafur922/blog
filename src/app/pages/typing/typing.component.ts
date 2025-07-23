@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CdkDrag } from '@angular/cdk/drag-drop';
 import { Stats } from '../../shared/interfaces/Stats';
+import { Observable } from 'rxjs';
+import { TypingDataService } from '../../shared/services/typingData/typing-data.service';
 
 
 type CharState = 'pending' | 'correct' | 'incorrect';
@@ -30,9 +32,9 @@ type Line = CharObject[];
 export class TypingComponent implements OnInit, OnDestroy {
   title = 'Typing';
   cap_state = false;
+  typingData$: Observable<string> | null = null
   initChars = 80;
-  originalText = "A textarea does not expose its line layout to JavaScript, which makes it very difficult to determine where the visual line breaks are. To solve this, we can render each character as an individual element, giving us full control over the layout and styling. This method allows us to precisely track the user's input and manage the state of each character, including simulating a cursor and handling line breaks exactly as we want. Press space at the end of a line to see the effect.";
-  words = this.originalText.split(' ');
+  words: string[] = []
   line: Line[] = [];
 
   private initialInputState: InputState = {
@@ -59,7 +61,9 @@ export class TypingComponent implements OnInit, OnDestroy {
   elapsedTime = 0;
   private timerInterval: any = null;
 
-  constructor() {}
+  constructor(private typingDataService: TypingDataService) {
+    this.typingData$ = typingDataService.typingData$
+  }
 
   get accuracy(): number {
     if (!this.inputState || !this.inputState.curPos) {
@@ -71,9 +75,20 @@ export class TypingComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.setupLines();
+    this.typingDataService.loadData()
+    this.getData()
+    this.setupLines()
   }
+  getData() {
+    this.typingData$?.subscribe(data => {
+      if (data != '') {
+        this.words = data.split(' ')
+      }
+      console.log(data);
 
+    })
+
+  }
   ngOnDestroy(): void {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
@@ -85,33 +100,40 @@ export class TypingComponent implements OnInit, OnDestroy {
     let tLine = '';
     let tCharObject: CharObject[] = [];
 
-    for (let i of this.words) {
-      if ((i + ' ' + tLine).length > this.initChars) {
-        tLine.split('').forEach(e => {
-          tCharObject.push({ char: e, state: 'pending' });
-        });
-        this.line.push(tCharObject);
-        tLine = '';
-        tCharObject = [];
+    // for (let i of this.words) {
+    this.typingData$?.subscribe(data => {
+      if (data != '') {
+        for (let i of data.split(' ')) {
+          if ((i + ' ' + tLine).length > this.initChars) {
+            tLine.split('').forEach(e => {
+              tCharObject.push({ char: e, state: 'pending' });
+            });
+            this.line.push(tCharObject);
+            tLine = '';
+            tCharObject = [];
+          }
+          tLine += i + ' ';
+        }
       }
-      tLine += i + ' ';
-    }
-    if (tLine) {
+      if (tLine) {
       tLine.split('').forEach(e => {
         tCharObject.push({ char: e, state: 'pending' });
       });
       this.line.push(tCharObject);
     }
+      
+    })
+    
 
     setTimeout(() => {
       this.spanRef = document.getElementsByClassName('each-char');
       this.spanRef?.item(0)?.classList.add('curChar');
-    }, 100);
+    }, 200);
   }
 
   handleKeyDown(event: KeyboardEvent): void {
     console.log(this.line);
-    
+
     let is = this.inputState;
     if (this.isModifierKey(event.key)) {
       return;
@@ -125,17 +147,17 @@ export class TypingComponent implements OnInit, OnDestroy {
     let { key } = event;
 
     if (is.row >= this.line.length || is.col >= this.line[is.row].length) {
-        // 如果已经输入完成，则停止计时并返回
-        if(this.timerInterval) clearInterval(this.timerInterval);
-        return;
+      // 如果已经输入完成，则停止计时并返回
+      if (this.timerInterval) clearInterval(this.timerInterval);
+      return;
     }
 
     if (key === this.line[is.row][is.col].char) {
       this.spanRef?.item(is.curPos)?.classList.remove('curChar');
-      if(this.line[is.row][is.col].state!=='incorrect'){
+      if (this.line[is.row][is.col].state !== 'incorrect') {
         this.line[is.row][is.col].state = 'correct';
       }
-      
+
       is.curPos++;
       is.col++;
 
@@ -143,8 +165,8 @@ export class TypingComponent implements OnInit, OnDestroy {
         is.col = 0;
         is.row++;
       }
-      
-      if(is.row < this.line.length) {
+
+      if (is.row < this.line.length) {
         this.spanRef?.item(is.curPos)?.classList.add('curChar');
       } else {
         // 完成所有输入
@@ -162,9 +184,9 @@ export class TypingComponent implements OnInit, OnDestroy {
     }
     this.stats.typedChars = is.curPos;
   }
-  
+
   private startTimer(): void {
-    this.stats.startTime = new Date(); 
+    this.stats.startTime = new Date();
 
     this.timerInterval = setInterval(() => {
       if (!this.stats.startTime) {
@@ -173,7 +195,7 @@ export class TypingComponent implements OnInit, OnDestroy {
       }
       const elapsedSeconds = (Date.now() - this.stats.startTime.getTime()) / 1000;
       this.elapsedTime = Math.floor(elapsedSeconds);
-      
+
       if (elapsedSeconds > 0) {
         const correctChars = this.inputState.curPos - this.inputState.incorrect;
         const elapsedMinutes = elapsedSeconds / 60;
@@ -183,19 +205,20 @@ export class TypingComponent implements OnInit, OnDestroy {
   }
 
   public reset(): void {
+
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
     }
     this.timerInterval = null;
     this.elapsedTime = 0;
-    
+
     // 重置光标位置
     const currentCursor = this.spanRef?.item(this.inputState.curPos);
-    if(currentCursor) currentCursor.classList.remove('curChar', 'incorrect');
-    
+    if (currentCursor) currentCursor.classList.remove('curChar', 'incorrect');
+
     this.stats = { ...this.initialStats };
     this.inputState = { ...this.initialInputState };
-    
+
     Array.from(this.spanRef || []).forEach(el => {
       el.classList.remove('incorrect', 'correct');
     });
