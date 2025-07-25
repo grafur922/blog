@@ -22,7 +22,7 @@ export class ClassifyComponent implements OnInit{
     Logger=inject(LoggerService)
     ngOnInit(): void {
         this.classifyDataService.loadData();
-        console.log(this.classifyData$);
+        // console.log(this.classifyData$);
     }
     
 }
