@@ -136,7 +136,9 @@ mat-icon {
 .fw {
   font-weight: 500;
 }
-* {
+body,
+li,
+ul {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -144,4 +146,7 @@ mat-icon {
 }
 a {
   color: #000;
+}
+.highlight {
+  color: #FFCA9B;
 }

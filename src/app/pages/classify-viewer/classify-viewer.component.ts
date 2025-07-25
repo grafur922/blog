@@ -37,7 +37,7 @@ export class ClassifyViewerComponent implements OnInit {
       this.expandedClassifyName = this.route.snapshot.fragment;
     }, 300);
     this.classifyDataService.loadData();
-    this.articleDataService.loadData();
+    // this.articleDataService.loadData();
   }
 
   handlePanelClosed(classifyName: string): void {
