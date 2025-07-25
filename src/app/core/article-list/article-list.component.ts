@@ -23,9 +23,7 @@ export class ArticleListComponent implements OnInit{
   formData:ArticleFormData[]=[]
   Logger=inject(LoggerService)
   ngOnInit(): void {
-    this.dataService.loadData()
-    console.log(this.articleData$);
-    
+    // this.dataService.loadData()
   }
   view(id:string){
     this.router.navigate(['/view/'+id])
