@@ -3,6 +3,12 @@
         <div class="card-title">
             归档
         </div>
-        
+        <ul class="card-ul">
+            @for (item of aListByTime; track $index) {
+                <li class="card-ul-li">
+                    {{item[0]}}
+                </li>
+            }
+        </ul>
     </cardTmp>
 </div>

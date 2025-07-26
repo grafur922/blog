@@ -10,7 +10,8 @@ import { Observable } from "rxjs";
     styleUrl:'./archive.component.less'
 })
 export class ArchiveComponent implements OnInit{
-    articleData$:Observable<ArticleFormData[] |null>|null=null
+    articleData$:Observable<ArticleFormData[]>|null=null
+    aListByTime:Map<string,ArticleFormData[]>=new Map()
     constructor(private articleService:DataService){
         this.articleData$=articleService.data$
     }
@@ -18,8 +19,15 @@ export class ArchiveComponent implements OnInit{
     ngOnInit(): void {
         // this.articleService.loadData()
         this.articleData$?.subscribe(res=>{
-            console.log(res);
-            
+            for(let i of res){
+                let t=i.createTime?.substring(0,7)
+                if(t&&this.aListByTime.has(t)){
+                    this.aListByTime.get(t)?.push(i)
+                }
+                else if(t){
+                    this.aListByTime.set(t,[i])
+                }
+            }
         })
     }
 }
