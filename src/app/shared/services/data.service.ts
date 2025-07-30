@@ -20,7 +20,7 @@ export class DataService {
           throw new Error(`API Error: ${res.message}`);
         }
       }),
-      map(res => res.data),
+      map(res => res.data.reverse()),
       catchError(error => {
         console.error('Failed to load article data:', error);
         return of([]);

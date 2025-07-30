@@ -1,7 +1,10 @@
 <div class="articleListMain">
     @for (item of articleData$|async; track $index) {
-        <div class="container">
-            <article-card [formData]="item" [index]="$index" (click)="navService.view(item.articleId===undefined?'0':item.articleId)"></article-card>
-        </div>
+    <div class="container">
+        <article-card [formData]="item" [index]="$index"
+            (click)="navService.view(item.articleId===undefined?'0':item.articleId)"></article-card>
+    </div>
     }
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+    </mat-paginator>
 </div>
