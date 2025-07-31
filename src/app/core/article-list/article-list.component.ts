@@ -9,9 +9,10 @@ import { NavToViewService } from '../../shared/services/navToView/nav-to-view.se
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import {MatPaginatorModule} from '@angular/material/paginator'
+import {MatDividerModule} from '@angular/material/divider'
 @Component({
   selector: 'app-article-list',
-  imports: [articleCardComponent,AsyncPipe,MatPaginatorModule],
+  imports: [articleCardComponent,AsyncPipe,MatPaginatorModule,MatDividerModule],
   templateUrl: './article-list.component.html',
   styleUrl: './article-list.component.less'
 })
