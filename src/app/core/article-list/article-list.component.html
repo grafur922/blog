@@ -4,6 +4,8 @@
         <article-card [formData]="item" [index]="$index"
             (click)="navService.view(item.articleId===undefined?'0':item.articleId)"></article-card>
     </div>
+    <!-- <mat-divider></mat-divider> -->
+     <hr>
     }
     <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
     </mat-paginator>
