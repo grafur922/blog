@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'HeadFont';
+  src: url('https://www.clematis.top/download/font/79bac1c2-53a9-47ba-8c83-64a2fc94b8b4.woff2') format('woff2');
+  font-style: normal;
+  font-weight: normal;
+}
 a {
   text-decoration: none !important;
 }
@@ -157,18 +163,18 @@ a {
 }
 .articleCardMain {
   background-color: #fff;
-  height: 260px;
+  height: 230px;
   border-radius: 10px;
   display: flex;
-  box-shadow: 0 0 10px #e5e5e5;
-  transition: box-shadow 0.3s;
   overflow: hidden;
 }
 .articleCardMain .inputLoad {
   display: none;
 }
 .articleCardMain:hover {
-  box-shadow: 0 0 10px #d1d1d1;
+  transform: scale(1.02);
+  box-shadow: 0 0 15px #e5e5e5;
+  transition: all 0.3s;
 }
 .articleCardMain .coverImg {
   width: 40%;
