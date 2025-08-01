@@ -9,6 +9,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { routes } from './app.routes';
 import {navConfig} from './shared/interfaces/navConfig'
 import {NAV_TOKEN,ENV,TOOLS_TOKEN} from './token'
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { CustomMatPaginatorIntl } from './shared/services/Internationalization/custom-paginator-intl';
 registerLocaleData(zh);
 const navUrl:navConfig[]=[
   {
@@ -70,6 +72,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide:TOOLS_TOKEN,
       useValue:toolsUrl
+    },
+    {
+      provide:MatPaginatorIntl,
+      useClass:CustomMatPaginatorIntl
     }
   ]
 };

@@ -3,6 +3,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink,Router } from '@angular/router';
 import axios from 'axios'
 import { LoggerService } from '../services/Logger/logger.service';
+import { DataService } from '../services/data.service';
 
 @Component({
     selector: 'my-card',
@@ -13,6 +14,7 @@ import { LoggerService } from '../services/Logger/logger.service';
 export class MyCardComponent implements OnInit {
     Logger=inject(LoggerService)
     router:Router
+    articleData$=inject(DataService).data$
     constructor(router:Router){
         this.router=router
     }
@@ -31,7 +33,10 @@ export class MyCardComponent implements OnInit {
     }
     ngOnInit(): void {
         this.Logger.log('MyCardComponent initialized')
-        
+        this.articleData$.subscribe(res=>{
+            this.article=res.length
+            
+        })
     }
     article:number=0
     classify:number=0
