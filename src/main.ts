@@ -6,7 +6,7 @@ import { AppComponent } from './app/app.component';
 import gsap from 'gsap';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 
-gsap.registerPlugin(ScrambleTextPlugin);
+// gsap.registerPlugin(ScrambleTextPlugin);
 
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
