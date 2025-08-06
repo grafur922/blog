@@ -164,9 +164,8 @@ a {
   src: url(../../../assets/font/AlimamaDaoLiTi.ttf);
 }
 @media only screen and (max-width: 900px) {
-  .bg-main {
-    height: 46px;
-    margin-bottom: 50px;
+  .background {
+    padding-top: 20% !important;
   }
 }
 .fleck {
