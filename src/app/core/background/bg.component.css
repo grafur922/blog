@@ -4,6 +4,12 @@
   font-style: normal;
   font-weight: normal;
 }
+@font-face {
+  font-family: 'Agency-Bold-Bg';
+  src: url('https://www.clematis.top/download/font/5defd978-ea32-4f3a-aab8-59e2ff4b51ffAgencyB.woff2') format('woff2');
+  font-style: normal;
+  font-weight: normal;
+}
 body,
 li,
 ul {
@@ -168,8 +174,59 @@ a {
 }
 .bg-main {
   background: url(../../../assets/image/background_blue_pattern.jpg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
 }
 .bg-main .background {
-  height: 100vh;
-  overflow: hidden;
+  padding-top: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.bg-main .background .bgTitle {
+  -webkit-user-select: none;
+  user-select: none;
+  height: 12.63vw;
+  position: relative;
+  left: 29%;
+  bottom: 5%;
+  width: 68%;
+  background-color: #fff;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bg-main .background .bgTitle .title {
+  color: #000;
+  font-size: 8.84vw;
+  font-family: 'Agency-Bold-Bg';
+}
+.bg-main .background .botImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bg-main .background .botImg .photo .rImg {
+  rotate: 5.6deg;
+  margin-left: -8%;
+  margin-top: -15%;
+}
+.bg-main .background .botImg .photo .lImg {
+  rotate: -6.6deg;
+  margin-right: -8%;
+}
+.bg-main .background .botImg .photo .pImg {
+  width: 35.37vw;
+  height: 22.1vw;
+  object-fit: cover;
+  border: solid 2px #fff;
+}
+.bg-main .background .botImg .photo .pImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'HeadFont';
+  src: url('https://www.clematis.top/download/font/79bac1c2-53a9-47ba-8c83-64a2fc94b8b4.woff2') format('woff2');
+  font-style: normal;
+  font-weight: normal;
+}
+body,
+li,
+ul {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
 a {
   text-decoration: none !important;
 }
@@ -136,14 +150,6 @@ mat-icon {
 .fw {
   font-weight: 500;
 }
-body,
-li,
-ul {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-}
 a {
   color: #000;
 }
@@ -163,6 +169,25 @@ a {
   font-family: 'HeadFont', 'sans-serif';
   font-size: 30px;
   position: relative;
+}
+.head-main .btnContainer {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.head-main .btnContainer .toggleTheme {
+  width: 30px;
+  height: 10px;
+  border-radius: 5px;
+  background: url(../../../assets/image/background_white_pattern.jpg);
+  transition: all 0.3s;
+}
+.head-main .btnContainer:hover .toggleTheme {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
 }
 .head-main .list-ul {
   display: flex;

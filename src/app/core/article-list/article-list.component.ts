@@ -16,17 +16,19 @@ import {MatDividerModule} from '@angular/material/divider'
   templateUrl: './article-list.component.html',
   styleUrl: './article-list.component.less'
 })
-export class ArticleListComponent implements OnInit{
+export class ArticleListComponent {
   articleData$:Observable<ArticleFormData[]| null>
+  alen:number=0
   constructor(private dataService:DataService,private router:Router) { 
     this.articleData$=this.dataService.data$
+    this.articleData$.subscribe(item=>{
+      this.alen=item?.length===undefined?0:item.length
+    })
   }
   navService=inject(NavToViewService)
-  formData:ArticleFormData[]=[]
+  // formData:ArticleFormData[]=[]
   Logger=inject(LoggerService)
-  ngOnInit(): void {
-    // this.dataService.loadData()
-  }
+
   view(id:string){
     this.router.navigate(['/view/'+id])
   }
