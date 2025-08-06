@@ -35,5 +35,6 @@ export class HomeComponent implements OnInit {
       },
       duration: 1
     });
+    // (new Promise).catch(res=>location.href(''))
   }
 }
