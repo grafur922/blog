@@ -48,8 +48,9 @@ export class HomeComponent implements OnInit,AfterViewInit {
       },
       duration: 1
     });
-    // (new Promise).catch(res=>location.href(''))
   }
+
+
   ngAfterViewInit(): void {
       
   }
