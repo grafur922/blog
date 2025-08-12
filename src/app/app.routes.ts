@@ -9,6 +9,7 @@ import { MarkdownViewerComponent } from './pages/markdown-viewer/markdown-viewer
 import { StyleTestComponent } from './pages/style-test/style-test.component';
 import { FreeCellComponent } from './pages/free-cell/free-cell.component';
 import { ClassifyViewerComponent } from './pages/classify-viewer/classify-viewer.component';
+import { LoadingScreenComponent } from './core/loading-screen/loading-screen.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full',component:HomeComponent },
@@ -21,5 +22,7 @@ export const routes: Routes = [
   {path:'style-test',component:StyleTestComponent},
   {path:'tools/free-cell',component:FreeCellComponent},
   {path:'classify-detail',component:ClassifyViewerComponent},
+  {path:'loading',component:LoadingScreenComponent},
+  
   {path:'**',component:PageNotFoundComponent},
 ];
