@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom, provideAppInitializer } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 // import { routes } from './app.routes';
 import { registerLocaleData } from '@angular/common';
@@ -11,7 +11,12 @@ import {navConfig} from './shared/interfaces/navConfig'
 import {NAV_TOKEN,ENV,TOOLS_TOKEN} from './token'
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { CustomMatPaginatorIntl } from './shared/services/Internationalization/custom-paginator-intl';
+import { LoadingService } from './shared/services/loading/loading.service';
+import {Observable} from 'rxjs'
 registerLocaleData(zh);
+export function initializeAppFactory(loadingService: LoadingService): () => Observable<any> {
+  return () => loadingService.loadCriticalAssets();
+}
 const navUrl:navConfig[]=[
   {
     name:'home',
@@ -76,6 +81,13 @@ export const appConfig: ApplicationConfig = {
     {
       provide:MatPaginatorIntl,
       useClass:CustomMatPaginatorIntl
+    },
+    LoadingService,
+    {
+      provide:provideAppInitializer,
+      useFactory:initializeAppFactory,
+      deps:[LoadingService],
+      multi:true
     }
   ]
 };

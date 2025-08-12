@@ -1,3 +1,11 @@
-<div class="loadingSMain">//暂时用不上
-    loadingScreen
+<div class="main">
+<div class="loadingSMain" #loadingMain>
+    <div class="container" #boxContainer>
+        <div class="box-group">
+            @for (item of dummyArray; track $index) {
+            <div class="box" #box (click)="loadingComp()"></div>
+            }
+        </div>
+    </div>
+</div>
 </div>

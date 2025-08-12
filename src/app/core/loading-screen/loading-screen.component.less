@@ -1,5 +1,73 @@
-.loadingSMain{
-    position: absolute;
-    height: 100vh;
-    background: url(../../../assets/image/background_white_pattern.jpg);
+@import url(../../../styles.less);
+
+.main {
+    position: fix;
+    width: 100vw;
+    direction: rtl;
+
+    .loadingSMain {
+        // position: absolute;
+        height: 100vh;
+        transition: all 0.5s ease;
+        width: 100%;
+        background-color: rgb(241, 236, 229);
+        .fcc();
+        // opacity: 1;
+        transform: translate(0, 0);
+
+        .container {
+            direction: ltr;
+
+            .fcc();
+            border-bottom: 2px solid #000;
+            padding-bottom: 5px;
+
+            .box-group {
+                display: flex;
+
+                // flex-direction: column;
+                // &::after{
+                //     content: '';
+                //     border: solid #000 2px;
+                // }
+
+                // margin-top: 2px;
+                .box {
+
+                    width: 80px;
+                    height: 80px;
+                    border: 2px solid black;
+                    // margin-left: -2px;
+                    visibility: hidden;
+                    transform-origin: right bottom;
+                    transition: transform 1s;
+                    // transition: transform 3s ease-in-out;
+
+                    // animation: square_rotate 1s infinite;
+                    // animation-fill-mode: forwards;
+                    transform: rotate(var(--rotation, 0deg));
+
+                    &:first-child {
+                        visibility: visible;
+                        margin-left: 0;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+
+
+// @keyframes square_rotate {
+//     // 0%,100% {transform: rotate(0deg);}
+//     to {transform: rotate(90deg;);}
+// }
+.is-animated {
+    width: 30px !important;
+    height: 10px !important;
+    opacity: 0;
+
+    transform: translate(-100%, 80%) !important;
 }

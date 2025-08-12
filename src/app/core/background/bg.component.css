@@ -159,10 +159,6 @@ mat-icon {
 a {
   color: #000;
 }
-@font-face {
-  font-family: 'customAli';
-  src: url(../../../assets/font/AlimamaDaoLiTi.ttf);
-}
 @media only screen and (max-width: 900px) {
   .background {
     padding-top: 20% !important;

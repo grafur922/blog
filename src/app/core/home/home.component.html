@@ -1,5 +1,10 @@
-<div id="smooth-wrapper">
+@if(isLoading){
+<app-loading-screen class="splash-loading"></app-loading-screen>
+}
+<div id="smooth-wrapper" class="home" #home>
     <div id="smooth-content">
+        @if(!isLoading) {
+
         <div class="homeMain">
             <div class="top">
                 <app-header></app-header>
@@ -8,5 +13,7 @@
             <layout class="content"></layout>
             <app-footer></app-footer>
         </div>
+
+        }
     </div>
 </div>
