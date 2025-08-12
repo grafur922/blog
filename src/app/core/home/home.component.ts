@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, viewChild } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { LayoutComponent } from '../layout/layout.component';
 import { bgComponent } from '../background/bg.component';
@@ -6,16 +6,30 @@ import { FooterComponent } from "../footer/footer.component";
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/all';
+import { LoadingScreenComponent } from "../loading-screen/loading-screen.component";
+import { LoadingService } from '../../shared/services/loading/loading.service';
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 @Component({
   selector: 'app-home',
-  imports: [HeaderComponent, LayoutComponent, bgComponent, FooterComponent],
+  imports: [HeaderComponent, LayoutComponent, bgComponent, FooterComponent, LoadingScreenComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.less'
 })
 export class HomeComponent implements OnInit {
+  loading=inject(LoadingService)
+  isLoading=true
+  home=viewChild<ElementRef<HTMLDivElement>>('home')
   constructor() {
-
+    this.loading.loadCriticalAssets().subscribe(res=>{
+      this.isLoading=false
+    })
+    // this.loading.isLoading$.subscribe(res=>{
+    //   console.log('loading state is ' + res);
+      
+    // })
+  }
+  show(){
+    
   }
   ngOnInit(): void {
     let smoother = ScrollSmoother.create({
