@@ -164,7 +164,6 @@ a {
   z-index: 999;
   direction: rtl;
   transition: all 0.5s ease;
-
 }
 .main .loadingSMain {
   height: 100vh;
@@ -201,10 +200,8 @@ a {
   margin-left: 0;
 }
 .is-animated {
-
   width: 30px;
   height: 10px;
-
   opacity: 0;
   transform: translate(-100%, 80%) !important;
 }
