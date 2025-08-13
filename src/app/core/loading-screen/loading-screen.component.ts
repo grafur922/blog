@@ -31,33 +31,23 @@ export class LoadingScreenComponent implements AfterViewInit, OnInit {
     }, 200);
   }
   rotateNext() {
-    let boxGroup = this.boxGroup()
-    for (let i = 0; i < boxGroup.length; i++) {
+    // let boxGroup = this.boxGroup()
+    // for (let i = 0; i < boxGroup.length; i++) {
 
-    }
+    // }
   }
   loadingComp() {
     let container = this.container()?.nativeElement
     let loadingMain=this.loadingMain()?.nativeElement
-    if (container !== undefined) {
-      container.style.display = "none"
+    if(container){
+      container.style.display="none"
     }
-    // gsap.to('.loadingSMain',{
-    //   width:30,
-    //   height:10,
-    //   duration:0.5,
-    //   x:"-100%",
-    //   y:"80%",
-    //   opacity:0
-    // })
     if (loadingMain) {
+      
       loadingMain.classList.add('is-animated')
+      // loadingMain.style.width="0px !important"
+      // loadingMain.style.display="none"
     }
-    setTimeout(() => {
-      if(loadingMain)[
-        loadingMain.style.display="none"
-      ]
-    }, 100);
   }
   rotate(x: number, boxGroup: Array<ElementRef<HTMLDivElement>>) {
     if (x >= boxGroup.length) {

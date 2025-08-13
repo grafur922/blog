@@ -1,3 +1,23 @@
+@font-face {
+  font-family: 'HeadFont';
+  src: url('https://www.clematis.top/download/font/79bac1c2-53a9-47ba-8c83-64a2fc94b8b4.woff2') format('woff2');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Agency-Bold-Bg';
+  src: url('https://www.clematis.top/download/font/5defd978-ea32-4f3a-aab8-59e2ff4b51ffAgencyB.woff2') format('woff2');
+  font-style: normal;
+  font-weight: normal;
+}
+body,
+li,
+ul {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
 a {
   text-decoration: none !important;
 }
@@ -17,6 +37,18 @@ mat-icon {
   margin-left: 20px;
 }
 .card-ul .card-ul-li:hover {
+  color: #FFCA9B;
+  z-index: 1;
+}
+.f-list-li {
+  cursor: pointer;
+  font-size: 14px;
+  color: #5f5f5f;
+  line-height: 1.8;
+  list-style: disc;
+  margin-left: 20px;
+}
+.f-list-li:hover {
   color: #FFCA9B;
   z-index: 1;
 }
@@ -124,14 +156,20 @@ mat-icon {
 .fw {
   font-weight: 500;
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-}
 a {
   color: #000;
+}
+@media only screen and (max-width: 900px) {
+  .record_nuber {
+    font-size: 14px;
+  }
+  .button-group {
+    width: 200px !important;
+    justify-content: end;
+  }
+  .footerMain .bgcontainer {
+    padding: 40px 10px !important;
+  }
 }
 .footerMain {
   margin-top: 10px;
@@ -139,7 +177,6 @@ a {
 .footerMain .bgcontainer {
   width: 100%;
   background: url(../../../assets/image/background_blue_pattern.jpg);
-  min-height: 200px;
   display: flex;
   padding: 40px 10%;
 }

@@ -2,9 +2,10 @@
 
 .main {
     position: fix;
-    width: 100vw;
+    z-index: 999;
+    // width: 100vw;
     direction: rtl;
-
+    transition: all 0.5s ease;
     .loadingSMain {
         // position: absolute;
         height: 100vh;
@@ -14,8 +15,7 @@
         .fcc();
         // opacity: 1;
         transform: translate(0, 0);
-
-        .container {
+        .containerA {
             direction: ltr;
 
             .fcc();
@@ -33,9 +33,8 @@
 
                 // margin-top: 2px;
                 .box {
-
-                    width: 80px;
-                    height: 80px;
+                    width: 5.05vw;
+                    height: 5.05vw;
                     border: 2px solid black;
                     // margin-left: -2px;
                     visibility: hidden;
@@ -65,9 +64,8 @@
 //     to {transform: rotate(90deg;);}
 // }
 .is-animated {
-    width: 30px !important;
-    height: 10px !important;
+    width:30px;
+    height: 10px;
     opacity: 0;
-
     transform: translate(-100%, 80%) !important;
 }
