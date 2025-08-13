@@ -2,6 +2,7 @@
 <div class="loadingSMain" #loadingMain>
     <div class="containerA" >
         <div class="box-group" #boxContainer>
+
             @for (item of dummyArray; track $index) {
             <div class="box" #box (click)="loadingComp()"></div>
             }
