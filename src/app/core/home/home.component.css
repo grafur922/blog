@@ -1,0 +1,4 @@
+.splash-loading {
+  position: fix;
+  z-index: 99;
+}

@@ -161,8 +161,9 @@ a {
 }
 .main {
   position: fix;
-  width: 100vw;
+  z-index: 999;
   direction: rtl;
+  transition: all 0.5s ease;
 }
 .main .loadingSMain {
   height: 100vh;
@@ -174,7 +175,7 @@ a {
   align-items: center;
   transform: translate(0, 0);
 }
-.main .loadingSMain .container {
+.main .loadingSMain .containerA {
   direction: ltr;
   display: flex;
   justify-content: center;
@@ -182,25 +183,25 @@ a {
   border-bottom: 2px solid #000;
   padding-bottom: 5px;
 }
-.main .loadingSMain .container .box-group {
+.main .loadingSMain .containerA .box-group {
   display: flex;
 }
-.main .loadingSMain .container .box-group .box {
-  width: 80px;
-  height: 80px;
+.main .loadingSMain .containerA .box-group .box {
+  width: 5.05vw;
+  height: 5.05vw;
   border: 2px solid black;
   visibility: hidden;
   transform-origin: right bottom;
   transition: transform 1s;
   transform: rotate(var(--rotation, 0deg));
 }
-.main .loadingSMain .container .box-group .box:first-child {
+.main .loadingSMain .containerA .box-group .box:first-child {
   visibility: visible;
   margin-left: 0;
 }
 .is-animated {
-  width: 30px !important;
-  height: 10px !important;
+  width: 30px;
+  height: 10px;
   opacity: 0;
   transform: translate(-100%, 80%) !important;
 }
