@@ -4,6 +4,20 @@
   font-style: normal;
   font-weight: normal;
 }
+@font-face {
+  font-family: 'Agency-Bold-Bg';
+  src: url('https://www.clematis.top/download/font/5defd978-ea32-4f3a-aab8-59e2ff4b51ffAgencyB.woff2') format('woff2');
+  font-style: normal;
+  font-weight: normal;
+}
+body,
+li,
+ul {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
 a {
   text-decoration: none !important;
 }
@@ -142,14 +156,6 @@ mat-icon {
 .fw {
   font-weight: 500;
 }
-body,
-li,
-ul {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-}
 a {
   color: #000;
 }
@@ -159,6 +165,9 @@ a {
   }
   .title {
     font-size: 20px !important;
+  }
+  .articleCardMain {
+    box-shadow: 0 0 15px #e5e5e5;
   }
 }
 .articleCardMain {

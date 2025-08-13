@@ -160,6 +160,9 @@ a {
   color: #000;
 }
 @media only screen and (max-width: 900px) {
+  .bg-main {
+    height: 80vh !important;
+  }
   .background {
     padding-top: 20% !important;
   }

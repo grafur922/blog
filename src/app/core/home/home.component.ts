@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit,AfterViewInit {
       this.isLoading=false
       setTimeout(() => {
         this.startScrollAni()
-      }, 0);
+      }, 100);
     })
     this.loading.isLoading$.subscribe(res=>{
       if(res===false){
