@@ -1,0 +1,28 @@
+@import url(../styles/_light_theme.less);
+
+.apply-theme-vars() {
+    --primary-color: @primary-color;
+    --body-background: @body-background;
+    --component-background: @component-background;
+    --text-color: @text-color;
+    --text-color-secondary: @text-color-secondary;
+    --border-color-base: @border-color-base;
+    --heading-color: @heading-color;
+}
+:root{
+    .apply-theme-vars();
+}
+.dark-theme{
+    @import url(../styles/_dark_theme.less);
+    .apply-theme-vars();
+}
+body{
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+h1, h2, h3 {
+  color: var(--heading-color);
+}
+a {
+  color: var(--primary-color);
+}

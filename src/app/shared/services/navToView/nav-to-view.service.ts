@@ -9,6 +9,7 @@ export class NavToViewService {
   private router=inject(Router)
   router$=1
   view(id:string){
-    this.router.navigate(['/view/'+id])
+    // this.router.navigate(['/view/'+id],{onSameUrlNavigation:'reload'})
+    this.router.navigateByUrl("/view/"+id)
   }
 }

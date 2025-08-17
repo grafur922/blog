@@ -1,4 +1,4 @@
-import { Component,CUSTOM_ELEMENTS_SCHEMA, inject, input, OnInit } from '@angular/core';
+import { Component,CUSTOM_ELEMENTS_SCHEMA, inject, input, OnInit,effect } from '@angular/core';
 import ZeroMd from 'zero-md'
 import { HeaderComponent } from '../../core/header/header.component';
 import axios from 'axios'
@@ -14,20 +14,26 @@ import { ClassifyComponent } from "../../shared/classify/classify.component";
   schemas:[CUSTOM_ELEMENTS_SCHEMA,]
 })
 export class MarkdownViewerComponent implements OnInit{
-  id=input('id')
+  id=input.required<string>()
   Logger=inject(LoggerService)
   url=""
   constructor(){
     if(!customElements.get('zero-md')){
       customElements.define('zero-md',ZeroMd)
     }
-  }
-  ngOnInit(): void {
-    axios.get(`/api/getUrl?id=${this.id()}`).then(res=>{
-      // this.Logger.log(res.data.data)
-      this.url=res.data.data
-    }).catch(res=>{
-      this.Logger.error(res)
+    effect(()=>{
+      const currentId = this.id(); 
+      axios.get(`/api/getUrl?id=${currentId}`).then(res => {
+        // this.Logger.log(res.data.data)
+        this.url = res.data.data;
+      }).catch(res => {
+        this.Logger.error(res);
+      });
     })
   }
+  ngOnInit(): void {
+    
+  }
+  
+  
 }
