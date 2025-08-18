@@ -3,41 +3,41 @@ import { LoggerService } from '../../shared/services/Logger/logger.service';
 import { Logger } from '../../shared/interfaces/Logger';
 import { ModalDismissReasons, NgbModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-
+import { MatSnackBar } from '@angular/material/snack-bar'
 @Component({
-  selector: 'app-footer',
-  imports: [ NgbModalModule, FormsModule ], 
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.less']
+	selector: 'app-footer',
+	imports: [NgbModalModule, FormsModule,],
+	templateUrl: './footer.component.html',
+	styleUrls: ['./footer.component.less']
 })
 export class FooterComponent implements OnInit {
-  private modalService = inject(NgbModal);
+	private modalService = inject(NgbModal);
 	closeResult: WritableSignal<string> = signal('');
-  message: string = ''; 
+	message: string = '';
+	_snackBar=inject(MatSnackBar)
+	//   open(content: TemplateRef<any>) {
+	// 		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+	// 			(result) => {
+	// 				this.closeResult.set(`Closed with: ${result}`);
+	//         console.log('留言已发送:', this.message); 
+	//         this.message = ''; 
+	// 			},
+	// 			(reason) => {
+	// 				this.closeResult.set(`Dismissed ${this.getDismissReason(reason)}`);
+	//         this.message = '';
+	// 			},
+	// 		);
+	// 	}
 
-  open(content: TemplateRef<any>) {
-		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
-			(result) => {
-				this.closeResult.set(`Closed with: ${result}`);
-        console.log('留言已发送:', this.message); 
-        this.message = ''; 
-			},
-			(reason) => {
-				this.closeResult.set(`Dismissed ${this.getDismissReason(reason)}`);
-        this.message = '';
-			},
-		);
+	constructor(@Inject(LoggerService) private Logger: Logger) {
+
 	}
 
-  constructor(@Inject(LoggerService) private Logger:Logger){
+	ngOnInit(): void {
+		this.Logger.log('footer works!')
+	}
 
-  }
-
-  ngOnInit(): void {
-    this.Logger.log('footer works!')
-  }
-
-  private getDismissReason(reason: any): string {
+	private getDismissReason(reason: any): string {
 		switch (reason) {
 			case ModalDismissReasons.ESC:
 				return 'by pressing ESC';
@@ -46,5 +46,15 @@ export class FooterComponent implements OnInit {
 			default:
 				return `with: ${reason}`;
 		}
+	}
+	hrefTo(url: string) {
+		window.open(url)
+	}
+
+	copy(text:string){
+		navigator.clipboard.writeText(text)
+		this._snackBar.open('已复制','关闭',{
+			duration:2000
+		})
 	}
 }
