@@ -5,3 +5,7 @@
   padding-top: 101px;
   padding-bottom: 50px;
 }
+.md-viewer .view-area .divider {
+  height: 100%;
+  width: 1px;
+}
