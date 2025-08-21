@@ -62,6 +62,10 @@ const toolsUrl=[
   {
     name:'free-cell',
     url:'/tools/free-cell'
+  },
+  {
+    name:'chat',
+    url:'/tools/chat'
   }
 ]
 export const appConfig: ApplicationConfig = {
