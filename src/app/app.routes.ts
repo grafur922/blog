@@ -10,6 +10,7 @@ import { StyleTestComponent } from './pages/style-test/style-test.component';
 import { FreeCellComponent } from './pages/free-cell/free-cell.component';
 import { ClassifyViewerComponent } from './pages/classify-viewer/classify-viewer.component';
 import { LoadingScreenComponent } from './core/loading-screen/loading-screen.component';
+import { AIChatComponent } from './pages/aichat/aichat.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full',component:HomeComponent },
@@ -23,6 +24,7 @@ export const routes: Routes = [
   {path:'tools/free-cell',component:FreeCellComponent},
   {path:'classify-detail',component:ClassifyViewerComponent},
   {path:'loading',component:LoadingScreenComponent},
+  {path:'tools/chat',component:AIChatComponent},
   
   {path:'**',component:PageNotFoundComponent},
 ];
