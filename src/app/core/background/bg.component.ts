@@ -1,5 +1,6 @@
-import { Component, OnInit, AfterViewInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, AfterViewInit, OnDestroy, inject } from "@angular/core";
 import { gsap } from 'gsap'
+import { NgZone } from "@angular/core";
 @Component({
   selector: 'bg',
   templateUrl: './bg.component.html',
@@ -12,10 +13,11 @@ export class bgComponent implements OnInit {
   constructor() {
 
   }
+  ngZone=inject(NgZone)
   ngOnInit(): void {
     const tl = gsap.timeline()
-
-    tl.fromTo(".rp", {
+    this.ngZone.runOutsideAngular(()=>{
+      tl.fromTo(".rp", {
       y: 500,
       x: 100,
       rotation: 20,
@@ -39,5 +41,7 @@ export class bgComponent implements OnInit {
       y: 0,
       rotation: 0
     })
+    })
+    
   }
 }

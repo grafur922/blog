@@ -166,3 +166,12 @@ mat-icon {
 a {
   color: #000;
 }
+.recentMain {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.recentMain .card-ul {
+  margin-left: -5px;
+}
