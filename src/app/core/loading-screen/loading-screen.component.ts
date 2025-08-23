@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit, viewChild, viewChildren, AfterViewInit, inject } from '@angular/core';
-import { gsap } from 'gsap'
 import { LoadingService } from '../../shared/services/loading/loading.service';
 @Component({
   selector: 'app-loading-screen',
