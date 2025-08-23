@@ -2,9 +2,9 @@
     <cardTmp [iconName]="iconName">
         <div class="card-title">最近</div>
         <ul class="card-ul">
-            @for (item of formData; track $index) {
-                <li class="card-ul-li" (click)="navService.view(item.articleId===undefined?'0':item.articleId)">{{item.title}}</li>
-            }
+            @for (item of data$ | async; track $index) {
+                <app-recent-card [recentData]="item"></app-recent-card>
+            }   
         </ul>
     </cardTmp>
 </div>

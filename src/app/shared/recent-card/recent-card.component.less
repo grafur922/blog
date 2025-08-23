@@ -1,0 +1,59 @@
+@import url(../../../styles.less);
+.recentCardMain{
+    // height: 50px;
+    // width: 300px;
+    // border: solid 1px black;
+    padding: 4px 0;
+    cursor: pointer;
+    .RContainer{
+        display: flex;
+        align-items: center;
+        .dateBox{
+            background-color: #F8F9FA;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            margin: 0 5px 0 5px;
+            .fcac();
+            
+            .day{
+                font-size: 12px;
+                .text-style-primary-title();
+                padding-top: 5px;
+            }
+
+            .month{
+                font-size: 8px;
+                font-weight: 600;
+                letter-spacing: -0.8px;
+                
+                color: #777;
+                padding-bottom: 5px;
+            }
+        }
+        .contentBox{
+            margin: 0 5px;
+            // margin-left: 10px;
+            .title{
+                .text-style-primary-title();
+                font-size: 15px;
+            }
+            .classifyName{
+                .text-style-primary-light();
+                font-size: 13px;
+                
+            }
+        }
+    }
+    &:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0 15px rgb(229, 229, 229);
+        // 
+
+        // &:hover {
+        //     box-shadow: 0 0 10px rgb(209, 209, 209);
+        // }
+    }
+    border-radius: 10px;
+    transition: all 0.3s;
+}

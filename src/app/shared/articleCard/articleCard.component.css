@@ -3,12 +3,14 @@
   src: url('https://www.clematis.top/download/font/79bac1c2-53a9-47ba-8c83-64a2fc94b8b4.woff2') format('woff2');
   font-style: normal;
   font-weight: normal;
+  letter-spacing: normal;
 }
 @font-face {
   font-family: 'Agency-Bold-Bg';
   src: url('https://www.clematis.top/download/font/5defd978-ea32-4f3a-aab8-59e2ff4b51ffAgencyB.woff2') format('woff2');
   font-style: normal;
   font-weight: normal;
+  letter-spacing: normal;
 }
 body,
 li,
@@ -23,10 +25,6 @@ a {
 }
 mat-icon {
   font-variation-settings: 'wght' 300;
-}
-.fb {
-  display: flex;
-  justify-content: space-between;
 }
 .card-ul .card-ul-li {
   cursor: pointer;
@@ -52,7 +50,11 @@ mat-icon {
   color: #FFCA9B;
   z-index: 1;
 }
-.fr {
+.fb {
+  display: flex;
+  justify-content: space-between;
+}
+.fbc {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -82,6 +84,12 @@ mat-icon {
   justify-content: center;
   align-items: center;
 }
+.fcac {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
 .dright {
   direction: rtl;
 }
@@ -103,10 +111,9 @@ mat-icon {
   justify-content: space-around;
 }
 .card-shadow {
-  margin-top: 20px;
+  margin-top: 30px;
   margin-right: 20px;
   padding: 20px 24px;
-  width: 300px;
   border-radius: 10px;
   box-shadow: 0 0 10px #e5e5e5;
   transition: box-shadow 0.3s;
@@ -173,6 +180,7 @@ a {
 .articleCardMain {
   background-color: #fff;
   height: 230px;
+  transition: all 0.3s;
   border-radius: 10px;
   display: flex;
   overflow: hidden;
@@ -183,7 +191,6 @@ a {
 .articleCardMain:hover {
   transform: scale(1.02);
   box-shadow: 0 0 15px #e5e5e5;
-  transition: all 0.3s;
 }
 .articleCardMain .coverImg {
   width: 40%;
