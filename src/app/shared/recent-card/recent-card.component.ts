@@ -11,15 +11,11 @@ interface Month{
   styleUrl: './recent-card.component.less',
   changeDetection:ChangeDetectionStrategy.OnPush
 })
-export class RecentCardComponent implements OnInit {
-  
-  constructor() {
-  }
-  recentData = input<ArticleFormData>()
-  ngOnInit(): void {
-    // console.log(this.recentData());
+export class RecentCardComponent {
+  constructor() {}
 
-  }
+  recentData = input<ArticleFormData>()
+  
   public day = computed(() => {
     const data = this.recentData();
     if (!data || !data.createTime) {
@@ -29,11 +25,6 @@ export class RecentCardComponent implements OnInit {
     const match = data.createTime.match(pattern);
     if (match) {
       return match[2]
-      // console.log(match);
-      
-      // let dayValue = match[2]; 
-      // dayValue = dayValue.replace(/^0+/, '');
-      // return dayValue === '' ? '0' : dayValue;
     } else {
       return '1'; 
     }
