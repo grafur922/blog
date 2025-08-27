@@ -3,7 +3,7 @@
         <div class="card-title">最近</div>
         <ul class="card-ul">
             @for (item of data$ | async; track $index) {
-                <app-recent-card [recentData]="item"></app-recent-card>
+                <app-recent-card [recentData]="item" (click)="navToView(item.articleId)"></app-recent-card>
             }   
         </ul>
     </cardTmp>

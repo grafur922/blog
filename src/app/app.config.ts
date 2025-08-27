@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom, provideAppInitializer } from '@angular/core';
-import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
 // import { routes } from './app.routes';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
@@ -69,7 +69,7 @@ const toolsUrl=[
   }
 ]
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }),  importProvidersFrom(FormsModule), provideAnimationsAsync(), provideHttpClient(),provideRouter(routes,withComponentInputBinding()),
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }),  importProvidersFrom(FormsModule), provideAnimationsAsync(), provideHttpClient(),provideRouter(routes,withComponentInputBinding(),withInMemoryScrolling({scrollPositionRestoration:'enabled'})),
     {
       provide:NAV_TOKEN,
       useValue:navUrl
@@ -82,7 +82,7 @@ export const appConfig: ApplicationConfig = {
       provide:TOOLS_TOKEN,
       useValue:toolsUrl
     },
-    {
+    {  
       provide:MatPaginatorIntl,
       useClass:CustomMatPaginatorIntl
     },
