@@ -6,11 +6,13 @@ import { ClassifyDataService } from '../../shared/services/classifyData/classify
 import { LoggerService } from '../services/Logger/logger.service';
 import { Router , RouterModule} from '@angular/router';
 import { classify } from '../interfaces/classifyData';
+import {MatCheckboxModule} from '@angular/material/checkbox'
+import {MatRippleModule} from '@angular/material/core'
 @Component({
     selector:'classify',
     templateUrl:'./classify.component.html',
     styleUrl:'./classify.component.less',
-    imports: [cardTmpComponent,RouterModule,AsyncPipe]
+    imports: [cardTmpComponent,RouterModule,AsyncPipe,MatCheckboxModule,MatRippleModule]
 })
 export class ClassifyComponent implements OnInit{
     classifyData$: Observable<classify[] | null>

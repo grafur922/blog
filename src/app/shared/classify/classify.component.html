@@ -3,12 +3,17 @@
         <div class="card-title">
             分类
         </div>
-        <ul class="card-ul">
+        <ul class="card-ul mr">
             @for (item of classifyData$ | async; track $index) {
-                <li class="card-ul-li" routerLink="/classify-detail" [fragment]="item.classifyName">
-                    {{item.classifyName}}
-                </li>
+            <!-- <li class="card-ul-li"  [fragment]="item.classifyName"> -->
+            <li class="card-ul-li">
+                <mat-checkbox>
+                    
+                </mat-checkbox>
+                {{item.classifyName}}
+            </li>
             }
         </ul>
     </cardTmp>
+    
 </div>
