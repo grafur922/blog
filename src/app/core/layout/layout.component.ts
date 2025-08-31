@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { MyCardComponent } from "../../shared/myCard/myCard.component";
-import { ClassifyComponent } from "../../shared/classify/classify.component";
+import { CategoryComponent } from "../../shared/category/category.component";
 import { ArchiveComponent } from "../../shared/archive/archive.component";
 import { StatisticsComponent } from "../../shared/statistics/statistics.component";
 import { recentComponent } from "../../shared/recent/recent.component";
@@ -12,7 +12,7 @@ import { ArticleListComponent } from "../article-list/article-list.component";
     selector: 'layout',
     templateUrl: './layout.component.html',
     styleUrl: './layout.component.less',
-    imports: [MyCardComponent, RouterModule, ClassifyComponent, ArchiveComponent, StatisticsComponent, recentComponent, ArticleListComponent]
+    imports: [MyCardComponent, RouterModule, CategoryComponent, ArchiveComponent, StatisticsComponent, recentComponent, ArticleListComponent]
 })
 export class LayoutComponent {
     constructor() {

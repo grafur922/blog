@@ -5,10 +5,10 @@ import axios from 'axios'
 import { LoggerService } from '../../shared/services/Logger/logger.service';
 import { FooterComponent } from "../../core/footer/footer.component";
 import { recentComponent } from '../../shared/recent/recent.component';
-import { ClassifyComponent } from "../../shared/classify/classify.component";
+import { CategoryComponent } from "../../shared/category/category.component";
 @Component({
   selector: 'app-markdown-viewer',
-  imports: [HeaderComponent, FooterComponent, recentComponent, ClassifyComponent],
+  imports: [HeaderComponent, FooterComponent, recentComponent, CategoryComponent],
   templateUrl: './markdown-viewer.component.html',
   styleUrl: './markdown-viewer.component.less',
   schemas:[CUSTOM_ELEMENTS_SCHEMA,]

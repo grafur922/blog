@@ -1,25 +1,25 @@
 <app-header></app-header>
-<div class="classifyViewerMain container">
+<div class="categoryViewerMain container">
     <mat-accordion>
-        @for (item of classifyData$ | async; track $index) {
+        @for (item of categoryData$ | async; track $index) {
         <mat-expansion-panel
             class="my-3"
-            [expanded]="item.classifyName === expandedClassifyName"
-            (opened)="expandedClassifyName = item.classifyName"
-            (closed)="handlePanelClosed(item.classifyName)"
+            [expanded]="item.categoryName"
+            (opened)="expandedCategoryName = item.categoryName"
+            (closed)="handlePanelClosed(item.categoryName)"
             
             >
             
             <mat-expansion-panel-header>
-                <mat-panel-title [class.highlight]="item.classifyName===expandedClassifyName">
-                    {{item.classifyName}}
+                <mat-panel-title [class.highlight]="item.categoryName===expandedCategoryName">
+                    {{item.categoryName}}
                 </mat-panel-title>
                 <mat-panel-description>
                     </mat-panel-description>
             </mat-expansion-panel-header>
 
             @for (aItem of articleData$ | async; track $index) {
-                @if (aItem.classifyId==item.classifyId) {
+                @if (aItem.categoryId==item.categoryId) {
                     <p class="f-list-li" (click)="navService.view(aItem.articleId===undefined?'0':aItem.articleId)">{{aItem.title}}</p>
                 }
             }

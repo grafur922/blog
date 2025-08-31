@@ -56,11 +56,11 @@ export class NewBlogComponent implements OnInit {
   }
   formData:ArticleFormData = {
     title: '默认标题',
-    classifyId: 1,
+    categoryId: 1,
     visibility: 'public',
     content: '',
     img: '',
-    classifyName:'',
+    categoryName:'',
     markdown:''
   }
   
