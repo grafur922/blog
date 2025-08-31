@@ -1,48 +1,47 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HeaderComponent } from "../../core/header/header.component";
-import { ClassifyDataService } from '../../shared/services/classifyData/classify-data.service';
+import { CategoryDataService } from '../../shared/services/categoryData/category-data.service';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { DataService } from '../../shared/services/data.service';
-import { classify } from '../../shared/interfaces/classifyData';
+import { Category } from '../../shared/interfaces/Category';
 import { ArticleFormData } from '../../shared/interfaces/articleFormData';
 import { NavToViewService } from '../../shared/services/navToView/nav-to-view.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-classify-viewer',
+  selector: 'app-category-viewer',
   imports: [MatExpansionModule, HeaderComponent, AsyncPipe],
-  templateUrl: './classify-viewer.component.html',
-  styleUrl: './classify-viewer.component.less'
+  templateUrl: './category-viewer.component.html',
+  styleUrl: './category-viewer.component.less'
 })
-export class ClassifyViewerComponent implements OnInit {
-  classifyData$: Observable<classify[] | null>;
+export class CategoryViewerComponent implements OnInit {
+  categoryData$: Observable<Category[] | null>;
   articleData$: Observable<ArticleFormData[] | null>;
   navService = inject(NavToViewService);
 
-  expandedClassifyName: string | null = null;
+  expandedCategoryName: string | null = null;
 
   constructor(
-    private classifyDataService: ClassifyDataService,
+    private categoryDataService: CategoryDataService,
     private articleDataService: DataService,
     private route: ActivatedRoute
   ) {
-    this.classifyData$ = this.classifyDataService.classifyData$;
+    this.categoryData$ = this.categoryDataService.categoryData$;
     this.articleData$ = this.articleDataService.data$;
   }
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.expandedClassifyName = this.route.snapshot.fragment;
+      this.expandedCategoryName = this.route.snapshot.fragment;
     }, 300);
-    this.classifyDataService.loadData();
     // this.articleDataService.loadData();
   }
 
-  handlePanelClosed(classifyName: string): void {
-    if (this.expandedClassifyName === classifyName) {
-      this.expandedClassifyName = null;
+  handlePanelClosed(categoryName: string): void {
+    if (this.expandedCategoryName === categoryName) {
+      this.expandedCategoryName = null;
     }
   }
 }
