@@ -8,6 +8,7 @@ import { Router } from '@angular/router'
 import { NavToViewService } from '../../shared/services/navToView/nav-to-view.service';
 import { Observable, of, Subject, Subscription, bufferTime, asapScheduler, filter, observeOn, asyncScheduler, interval, bufferToggle, timer, takeUntil } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+<<<<<<< HEAD
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatDividerModule } from '@angular/material/divider'
 import { CategorySelectService } from '../../shared/services/categorySelect/category-select.service';
@@ -17,6 +18,12 @@ import gsap from 'gsap'
 import CSSPlugin from 'gsap/CSSPlugin';
 gsap.registerPlugin(CSSPlugin)
 
+=======
+import {MatPaginatorModule} from '@angular/material/paginator'
+import {MatDividerModule} from '@angular/material/divider'
+import { CategorySelectService } from '../../shared/services/categorySelect/category-select.service';
+import { CategorySelect } from '../../shared/interfaces/Category';
+>>>>>>> d5ac369 (refactor(category): implement checkbox selection for categories and update related components)
 @Component({
   selector: 'app-article-list',
   imports: [articleCardComponent, AsyncPipe, MatPaginatorModule, MatDividerModule, CommonModule],
