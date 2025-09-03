@@ -1,3 +1,6 @@
-.articleListMain .container {
+.articleListMain .acard .container {
   margin-bottom: 20px;
+}
+.hide {
+  display: none !important;
 }

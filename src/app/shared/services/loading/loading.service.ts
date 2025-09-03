@@ -27,7 +27,7 @@ export class LoadingService {
     this._isLoading$.next(true)
   }
   loadCriticalAssets(): Observable<any[] | null> {
-    console.log('Loading critical assets via Observables...');
+    // console.log('Loading critical assets via Observables...');
 
     const imageObservables$ = this.CRITICAL_IMAGE_URLS.map(url => this.loadImage(url));
     const fontObservables$ = this.CRITICAL_FONTS.map(font => this.loadFont(font));

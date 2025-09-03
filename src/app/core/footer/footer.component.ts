@@ -34,7 +34,7 @@ export class FooterComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.Logger.log('footer works!')
+		// this.Logger.log('footer works!')
 	}
 
 	private getDismissReason(reason: any): string {
