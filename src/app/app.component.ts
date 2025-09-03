@@ -9,7 +9,7 @@ import { LoadingScreenComponent } from "./core/loading-screen/loading-screen.com
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LoadingScreenComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })

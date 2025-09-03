@@ -10,6 +10,8 @@ import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import {MatPaginatorModule} from '@angular/material/paginator'
 import {MatDividerModule} from '@angular/material/divider'
+import { CategorySelectService } from '../../shared/services/categorySelect/category-select.service';
+import { CategorySelect } from '../../shared/interfaces/Category';
 @Component({
   selector: 'app-article-list',
   imports: [articleCardComponent,AsyncPipe,MatPaginatorModule,MatDividerModule],
@@ -17,17 +19,36 @@ import {MatDividerModule} from '@angular/material/divider'
   styleUrl: './article-list.component.less'
 })
 export class ArticleListComponent {
-  articleData$:Observable<ArticleFormData[]| null>
+  articleData$:Observable<ArticleFormData[]>
   alen:number=0
+  categoryArray:CategorySelect[]=[]
+  checkboxSelect$=inject(CategorySelectService).checkboxSelect$
   constructor(private dataService:DataService,private router:Router) { 
     this.articleData$=this.dataService.data$
     this.articleData$.subscribe(item=>{
       this.alen=item?.length===undefined?0:item.length
     })
+    this.checkboxSelect$.subscribe(res=>{
+      this.categoryArray=res
+    })
   }
   navService=inject(NavToViewService)
-  // formData:ArticleFormData[]=[]
   Logger=inject(LoggerService)
+
+  visible(categoryId:number):boolean{
+    // console.log(this.categoryArray);
+    
+    for(let i of this.categoryArray){
+      if(i.categoryId==categoryId){
+
+        return i.select
+      }
+    }
+    // for(let i=0;i<this.categoryArray.length;i++){
+    //   if(this.categoryArray[i].categoryId==)
+    // }
+    return true
+  }
 
   view(id:string){
     this.router.navigate(['/view/'+id])
