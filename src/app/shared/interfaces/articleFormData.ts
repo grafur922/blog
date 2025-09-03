@@ -1,7 +1,7 @@
 export interface ArticleFormData {
     articleId?:string
     title?: string;
-    categoryId?: number;
+    categoryId: number;
     visibility?: string;
     content?: string;
     img?:string;

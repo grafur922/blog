@@ -4,10 +4,9 @@
             分类
         </div>
         <ul class="card-ul mr">
-            @for (item of classifyData$ | async; track $index) {
-            <!-- <li class="card-ul-li"  [fragment]="item.classifyName"> -->
-            <li class="card-ul-li">
-                <mat-checkbox>
+            @for (item of checkBoxSelect$ | async; track $index) {
+            <li class="card-ul-li" [class.select]="item.select">
+                <mat-checkbox [checked]="item.select" (change)="onSelectionChange(item,$event.checked)">
                     
                 </mat-checkbox>
                 {{item.categoryName}}
@@ -15,5 +14,4 @@
             }
         </ul>
     </cardTmp>
-    
 </div>
