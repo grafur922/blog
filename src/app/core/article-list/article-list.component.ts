@@ -157,4 +157,8 @@ export class ArticleListComponent implements OnDestroy, OnInit {
     // }
 
   }
+  // onEnter(event:AnimationCallbackEvent){
+  //   console.log(event);
+    
+  // }
 }
