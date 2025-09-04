@@ -12,9 +12,10 @@ import {MatPaginatorModule} from '@angular/material/paginator'
 import {MatDividerModule} from '@angular/material/divider'
 import { CategorySelectService } from '../../shared/services/categorySelect/category-select.service';
 import { CategorySelect } from '../../shared/interfaces/Category';
+import { AnimationCallbackEvent } from '@angular/core';
 @Component({
   selector: 'app-article-list',
-  imports: [articleCardComponent,AsyncPipe,MatPaginatorModule,MatDividerModule],
+  imports: [articleCardComponent, AsyncPipe, MatPaginatorModule, MatDividerModule],
   templateUrl: './article-list.component.html',
   styleUrl: './article-list.component.less'
 })
@@ -52,5 +53,9 @@ export class ArticleListComponent {
 
   view(id:string){
     this.router.navigate(['/view/'+id])
+  }
+  onEnter(event:AnimationCallbackEvent){
+    console.log(event);
+    
   }
 }
