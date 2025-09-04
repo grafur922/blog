@@ -1,8 +1,8 @@
 <div class="articleListMain">
     @for (item of articleData$|async; track $index) {
-    <div class="acard" [hidden]="!visible(item.categoryId)">
+    <div class="acard" [hidden]="!visible(item.categoryId)" >
         <div class="container">
-            <article-card [formData]="item" [index]="$index"
+            <article-card [formData]="item" [index]="$index" (animate.enter)="onEnter($event)"
                 (click)="navService.view(item.articleId===undefined?'0':item.articleId) "></article-card>
         </div>
         <!-- <mat-divider></mat-divider> -->
