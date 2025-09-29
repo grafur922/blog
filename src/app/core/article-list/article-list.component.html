@@ -1,15 +1,18 @@
 <div class="articleListMain">
-    @for (item of articleData$|async; track $index) {
-    <div class="acard" [hidden]="!visible(item.categoryId)" >
+    @for (item of articleData$ | async; track $index) {
+    @if(visible(item.categoryId)){
+    <div class="acard" (animate.leave)="onLeave($event)" animate.enter="enter-animation">
         <div class="container">
-            <article-card [formData]="item" [index]="$index" (animate.enter)="onEnter($event)"
+            <article-card [formData]="item" [index]="$index"
                 (click)="navService.view(item.articleId===undefined?'0':item.articleId) "></article-card>
         </div>
         <!-- <mat-divider></mat-divider> -->
         <hr>
     </div>
     }
+
+    }
     <mat-paginator [length]="6" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"
-        itemsPerPageLabel="每页">
+        itemsPerPageLabel="per page">
     </mat-paginator>
 </div>

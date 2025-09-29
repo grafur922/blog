@@ -25,7 +25,7 @@ export class CategoryComponent implements OnInit{
     
     constructor(){
         this.checkBoxSelect$.subscribe(res=>{
-            console.log(res);
+            this.Logger.log(res)
         }) 
     }
     onSelectionChange(item:CategorySelect,isSelect:boolean){

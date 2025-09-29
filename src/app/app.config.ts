@@ -4,7 +4,6 @@ import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from 
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { FormsModule } from '@angular/forms';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient } from '@angular/common/http';
 import { routes } from './app.routes';
 import {navConfig} from './shared/interfaces/navConfig'
@@ -69,14 +68,14 @@ const toolsUrl=[
   }
 ]
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }),  importProvidersFrom(FormsModule), provideAnimationsAsync(), provideHttpClient(),provideRouter(routes,withComponentInputBinding(),withInMemoryScrolling({scrollPositionRestoration:'enabled'})),
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }),  importProvidersFrom(FormsModule), provideHttpClient(),provideRouter(routes,withComponentInputBinding(),withInMemoryScrolling({scrollPositionRestoration:'enabled'})),
     {
       provide:NAV_TOKEN,
       useValue:navUrl
     },
     {
       provide:ENV,
-      useValue:'DEV'
+      useValue:'PRO'
     },
     {
       provide:TOOLS_TOKEN,

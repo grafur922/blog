@@ -26,7 +26,7 @@ export class DataService {
         return of([]);
       }),
       shareReplay(1) 
-    );
+    )
   }
 
   // private dataReloader$ = new BehaviorSubject<void>(undefined);
