@@ -3,7 +3,7 @@
     @if(visible(item.categoryId)){
     <div class="acard" (animate.leave)="onLeave($event)" animate.enter="enter-animation">
         <div class="container">
-            <article-card [formData]="item" [index]="$index" (animate.enter)="onEnter($event)"
+            <article-card [formData]="item" [index]="$index"
                 (click)="navService.view(item.articleId===undefined?'0':item.articleId) "></article-card>
         </div>
         <!-- <mat-divider></mat-divider> -->
