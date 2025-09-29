@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, inject, OnInit, viewChild, NgZone } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnInit, viewChild, NgZone, AfterContentInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { LayoutComponent } from '../layout/layout.component';
 import { bgComponent } from '../background/bg.component';
@@ -15,28 +15,13 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
   templateUrl: './home.component.html',
   styleUrl: './home.component.less'
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit, AfterContentInit {
   loading = inject(LoadingService)
   ngZone = inject(NgZone)
   isLoading = true
   home = viewChild<ElementRef<HTMLDivElement>>('home')
   aniStart:ReturnType<typeof setTimeout>|null=null
-  constructor() {
-    this.loading.loadCriticalAssets().subscribe(res => {
-      this.isLoading = false
-      this.ngZone.runOutsideAngular(() => {
-        this.aniStart=setTimeout(() => {
-          this.startScrollAni()
-        }, 100);
-      })
-
-    })
-    this.loading.isLoading$.subscribe(res => {
-    })
-    // this.loading.isLoading$.subscribe(res=>{
-    //   console.log('loading state is ' + res);
-
-    // })
+  constructor() {    
   }
   startScrollAni() {
     gsap.to('.top', {
@@ -56,8 +41,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
 
-  ngAfterViewInit(): void {
-
+  ngAfterContentInit(): void {
+    
   }
   show() {
 
@@ -70,6 +55,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
         effects: true,
         // normalizeScroll: true
       });
+    })
+    this.loading.loadCriticalAssets().subscribe(res => {
+      this.isLoading = false
+      this.ngZone.runOutsideAngular(() => {
+        this.aniStart=setTimeout(() => {
+          this.startScrollAni()
+        }, 100);
+      })
+
     })
 
 
