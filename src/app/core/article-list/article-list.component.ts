@@ -69,7 +69,6 @@ export class ArticleListComponent implements OnDestroy, OnInit {
         }
       });
     });
-
     this.checkboxSelect$.pipe(
       takeUntil(this.destroy$)
     ).subscribe(res => {
@@ -82,7 +81,6 @@ export class ArticleListComponent implements OnDestroy, OnInit {
     //   console.log(res);
     // })
   }
-
   visible(categoryId: number): boolean {
     for (let i of this.categoryArray) {
       if (i.categoryId == categoryId) {
