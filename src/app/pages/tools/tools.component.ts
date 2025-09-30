@@ -5,10 +5,11 @@ import { navConfig } from '../../shared/interfaces/navConfig';
 import { Logger } from '../../shared/interfaces/Logger';
 import { LoggerService } from '../../shared/services/Logger/logger.service';
 import { Router } from '@angular/router';
+import { DecideComponent } from "../decide/decide.component";
 type pConfig=Pick<navConfig,'url' | 'enable'>
 @Component({
   selector: 'app-tools',
-  imports: [ToolsCardTemplateComponent],
+  imports: [ToolsCardTemplateComponent, DecideComponent],
   templateUrl: './tools.component.html',
   styleUrl: './tools.component.less'
 })
