@@ -1,1 +1,111 @@
-<p>decide works!</p>
+<div class="decideMain">
+  <div class="wave-group">
+    <input required type="text" [(ngModel)]="title" class="input" (blur)="saveTitle()">
+    <span class="bar"></span>
+    <label class="label">
+      <span class="label-char" style="--index: 0">T</span>
+      <span class="label-char" style="--index: 1">i</span>
+      <span class="label-char" style="--index: 2">t</span>
+      <span class="label-char" style="--index: 3">l</span>
+      <span class="label-char" style="--index: 4">e</span>
+    </label>
+  </div>
+
+  <section class="turntable">
+    <div class="wheel-container">
+      <div
+        class="wheel"
+        [class.spinning]="isSpinning()"
+        [style.transform]="'rotate(' + rotation() + 'deg)'"
+      >
+        @if (segments().length === 0) {
+          <div class="wheel-empty">请先添加选项</div>
+        } @else {
+          @for (segment of segments(); track segment.id; let index = $index) {
+            <div
+              class="segment"
+              [class.active]="selectedIndex() === index && !isSpinning()"
+              [style.background-color]="segment.color"
+              [style.clip-path]="segment.clipPath"
+            >
+              <div class="segment-label" [style.transform]="segment.contentTransform">
+                {{ segment.title || ('Option ' + (index + 1)) }}
+              </div>
+            </div>
+          }
+        }
+      </div>
+
+      <button
+        type="button"
+        class="spin-button"
+        [disabled]="isSpinning() || segments().length < 2"
+        (click)="spinWheel()"
+      >
+        {{ isSpinning() ? '旋转中…' : '开始' }}
+      </button>
+
+      <div class="pointer" aria-hidden="true"></div>
+    </div>
+
+    @if (selectedIndex() !== null && segments().length > 0 && !isSpinning()) {
+      @let idx = selectedIndex()!;
+      @let selectedSegment = segments()[idx];
+      <p class="result">当前选中：{{ selectedSegment.title || ('Option ' + (idx + 1)) }}</p>
+    }
+  </section>
+
+  <section class="options-panel">
+    <div class="options-header">
+      <h2 class="panel-title">选项设置</h2>
+      <button type="button" class="add-option" (click)="addOption()">新增选项</button>
+    </div>
+
+    <table class="options-table" aria-label="转盘选项配置">
+      <thead>
+        <tr>
+          <th scope="col">序号</th>
+          <th scope="col">标题</th>
+          <th scope="col">颜色</th>
+          <th scope="col">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (option of options(); track option.id; let index = $index) {
+          <tr>
+            <td>{{ index + 1 }}</td>
+            <td>
+              <input
+                class="option-input"
+                type="text"
+                [value]="option.title"
+                placeholder="请输入标题"
+                (input)="updateTitle(option.id, $any($event.target).value)"
+              >
+            </td>
+            <td>
+              <input
+                class="color-input"
+                type="color"
+                [value]="option.color"
+                aria-label="选择颜色"
+                title="选择颜色"
+                (input)="updateColor(option.id, $any($event.target).value)"
+              >
+            </td>
+            <td>
+              <button
+                type="button"
+                class="remove-option"
+                [disabled]="options().length <= 2"
+                (click)="removeOption(option.id)"
+              >
+                删除
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </section>
+</div>
