@@ -65,6 +65,10 @@ const toolsUrl=[
   {
     name:'chat',
     url:'/tools/chat'
+  },
+  {
+    name:'decide',
+    url:'/tools/decide'
   }
 ]
 export const appConfig: ApplicationConfig = {
