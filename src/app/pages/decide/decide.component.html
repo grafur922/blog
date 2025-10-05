@@ -22,6 +22,7 @@
           <div class="wheel-empty">请先添加选项</div>
         } @else {
           @for (segment of segments(); track segment.id; let index = $index) {
+            <!--active会导致字体变糊 [class.active]="selectedIndex() === index && !isSpinning()"-->
             <div
               class="segment"
               [class.active]="selectedIndex() === index && !isSpinning()"
@@ -29,7 +30,7 @@
               [style.clip-path]="segment.clipPath"
             >
               <div class="segment-label" [style.transform]="segment.contentTransform">
-                {{ segment.title || ('Option ' + (index + 1)) }}
+                <span class="segment-title">{{ segment.title || ('Option ' + (index + 1)) }}</span>
               </div>
             </div>
           }
