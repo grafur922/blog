@@ -188,6 +188,7 @@ export class DecideComponent implements OnDestroy {
 
     if (this.spinTimer) {
       clearTimeout(this.spinTimer);
+
     }
 
     this.spinTimer = setTimeout(() => {
