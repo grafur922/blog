@@ -157,6 +157,7 @@ export class DecideComponent implements OnDestroy {
   }
 
   spinWheel(): void {
+    // this.rotation.set(0);
     if (this.isSpinning()) {
       return;
     }
@@ -165,20 +166,29 @@ export class DecideComponent implements OnDestroy {
     if (!segments.length) {
       return;
     }
-
+    
+    
     const targetIndex = Math.floor(Math.random() * segments.length);
     const segment = segments[targetIndex];
     const extraTurns = 5 + Math.floor(Math.random() * 3);
     const maxOffset = Math.max(0, this.segmentAngle() / 2 - 2);
     const offset = maxOffset === 0 ? 0 : (Math.random() * 2 - 1) * maxOffset;
-    const targetRotation = this.rotation() + extraTurns * 360 - (segment.midAngle + offset);
-
+    // const targetRotation = this.rotation() + extraTurns * 360 - (segment.midAngle + offset);
+    const targetRotation = this.rotation() + extraTurns * 360 - (this.rotation()%360+segment.midAngle + offset);
+    console.log('segments', segments);
+    console.log('targetIndex', targetIndex);
+    console.log('segment', segment);
+    console.log('extraTurns', extraTurns);
+    console.log('maxOffset', maxOffset);
+    console.log('offset', offset);
+    console.log('targetRotation', targetRotation);
     this.selectedIndex.set(targetIndex);
     this.isSpinning.set(true);
     this.rotation.set(targetRotation);
 
     if (this.spinTimer) {
       clearTimeout(this.spinTimer);
+
     }
 
     this.spinTimer = setTimeout(() => {
