@@ -1,14 +1,14 @@
-<nav class="head-main navbar navbar-expand-lg .container-fluid">
+<nav class="head-main navbar navbar-expand-lg .container-fluid" [class.fill-theme]="theme()=='fill'">
     <div class="name" (click)="test()">
         Aqua
     </div>
     <div class="list" id="navbarNav">
         <ul class="list-ul d-flex justify-content-center align-items-center ms-auto mb-2 mb-lg-0" >
-            <li class="list-ul-li nav-item" name="home">首页</li>
-            <li class="list-ul-li nav-item" name="tools">工具</li>
+            <li class="list-ul-li nav-item" name="home"><i class="fa-regular  fa-house"></i>首页</li>
+            <li class="list-ul-li nav-item" name="tools"><i class="fa-regular fa-bookmark"></i>工具</li>
             <!-- <li class="list-ul-li nav-item" name="msg">留言</li>
             <li class="list-ul-li nav-item" name="photo-album">相册</li> -->
-            <li class="list-ul-li nav-item" name="about">关于</li>
+            <li class="list-ul-li nav-item" name="about"><i class="fa-regular fa-face-meh-blank"></i>关于</li>
         </ul>
     </div>
     <div class="btnContainer">

@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
   }
   ngOnInit(): void {
     this.ngZone.runOutsideAngular(() => {
-      let smoother = ScrollSmoother.create({
+      ScrollSmoother.create({
         smooth: 1,
         smoothTouch: 0.1,
         effects: true,
