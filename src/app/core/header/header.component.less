@@ -1,14 +1,29 @@
 @import url(../../../styles.less);
+:host {
+    --head-bg: #f3f1ef;
+    --head-switch-bg: url('../../../assets/image/background_blue_pattern.jpg');
+    --head-font-color: #1a1b40;
+    --head-border-color: rgba(139, 139, 140, 0.3);
+}
 
+.fill-theme {
+    --head-bg: url('../../../assets/image/background_blue_pattern.jpg');
+    --head-switch-bg: url('../../../assets/image/background_white_pattern.jpg');
+    --head-font-color: #F0F8FF;
+    --head-border-color: rgba(240, 248, 255, 0.3);
+}
+.fa-regular{
+    margin-right: 5px;
+}
 .head-main {
-    background: url(../../../assets/image/background_blue_pattern.jpg);
+    background: var(--head-bg,url(../../../assets/image/background_blue_pattern.jpg));
     // position: absolute;
     .fbc();
     font-weight: 600;
     padding: 0 5%;
     height: 60px;
-    color: #F0F8FF;
-    border-bottom: 1px solid rgba(240, 248, 255, 0.3);
+    color: var(--head-font-color,#F0F8FF);
+    border-bottom: 1px solid var(--head-border-color,rgba(240, 248, 255, 0.3));
     width: 100%;
     .name {
         font-family: 'HeadFont','sans-serif';
@@ -26,7 +41,7 @@
             width: 30px;
             height: 10px;
             border-radius: 5px;
-            background: url(../../../assets/image/background_white_pattern.jpg);
+            background: var(--head-switch-bg,url(../../../assets/image/background_white_pattern.jpg));
             transition: all 0.3s;
         }
         &:hover .toggleTheme{
@@ -59,35 +74,34 @@
                 }
             }
 
-            &-li:nth-child(1)::before {
-                content: url(../../../assets/icons/home.svg)'\00A0';
-                height: 20px;
-            }
+            // &-li:nth-child(1)::before {
+            //     content: url(../../../assets/icons/home.svg)'\00A0';
+            //     height: 20px;
+                
+            // }
 
-            &-li:nth-child(2)::before {
-                content: url(../../../assets/icons/定位.svg)'\00A0';
-                height: 20px;
-            }
+            // &-li:nth-child(2)::before {
+            //     content: url(../../../assets/icons/定位.svg)'\00A0';
+            //     height: 20px;
+                
+            // }
 
-            &-li:nth-child(3)::before {
-                content: url(../../../assets/icons/留言.svg)'\00A0';
-                height: 20px;
-            }
+            // &-li:nth-child(3)::before {
+            //     content: url(../../../assets/icons/留言.svg)'\00A0';
+            //     height: 20px;
+            // }
 
-            &-li:nth-child(4)::before {
-                content: url(../../../assets/icons/相册.svg)'\00A0';
-                height: 20px;
-            }
+            // &-li:nth-child(4)::before {
+            //     content: url(../../../assets/icons/相册.svg)'\00A0';
+            //     height: 20px;
+            // }
 
-            &-li:nth-child(5)::before {
-                content: url(../../../assets/icons/about.svg)'\00A0';
-                height: 20px;
-            }
+            // &-li:nth-child(5)::before {
+            //     content: url(../../../assets/icons/about.svg)'\00A0';
+            //     height: 20px;
+            // }
         }
     }
-}
-.btn-icon-co{
-    
 }
 .navbar-toggler{
     color: aliceblue;

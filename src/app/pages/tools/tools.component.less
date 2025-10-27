@@ -1,27 +1,78 @@
-@import url(../../../styles.less);
+// @import url(../../../styles.less);
 
 .toolsMain {
-    .top {
-        .fill {
-            background-color: #2a8f99;
-            min-height: 20px;
+    min-height: 200vh;
+    .wrapper {
+        position: relative;
+        // padding-bottom: 150px;
+        position: sticky;
+        top: 0;
+        
+        .tool-container {
+            // height: 100vh;
+            .title {
+                font-size: 30px;
+                font-weight: 600;
+                padding: 60px 4%;
+            }
+            .cardbox {
+                // transition: all 1s ease-in;
+                display: flex;
+                padding: 0 4% 5% 10%;
+                app-tools-card-template {
+                    width: 100%;
+                    // width: 490px;
+                    padding-right: 200px;
+                    
+                    // padding-right: 160px;
+                    // &:nth-last-child(1) {
+                    //     // padding-right: 40px;
+                    // }
+                    
+                }
+            }
         }
-
-        .title {
-            background-color: #81c8e4;
-            .f30();
-            padding: 20px;
-        }
-    }
-
-    .tool-container {
-        // display: grid;
-        // gap: 20px;
-        // grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        display: flex;
-        flex-wrap: wrap;
-        padding: 20px 20px 0;
-        cursor: pointer;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .toolsMain {
+//     .top {
+//         .fill {
+//             background-color: #2a8f99;
+//             min-height: 20px;
+//         }
+
+//         .title {
+//             background-color: #81c8e4;
+//             color: white;
+//             .f30();
+//             padding: 20px;
+//         }
+//     }
+
+//     .tool-container {
+//         // display: grid;
+//         // gap: 20px;
+//         // grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+//         display: flex;
+//         flex-wrap: wrap;
+//         // justify-content: center;
+//         padding: 20px 20px 0;
+//         // width: 100vw;
+//         cursor: pointer;
+//     }
+
+// }

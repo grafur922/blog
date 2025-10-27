@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+// import { ɵEmptyOutletComponent } from "../../../../node_modules/@angular/router/router_module.d";
 
 @Component({
   selector: 'app-tools-card-template',

@@ -1,4 +1,4 @@
-import { afterNextRender, Component, Inject, inject, OnInit } from '@angular/core';
+import { afterNextRender, Component, Inject, inject, input, OnInit } from '@angular/core';
 import { Logger } from '../../shared/interfaces/Logger';
 import { LoggerService } from '../../shared/services/Logger/logger.service';
 import { NAV_TOKEN } from '../../token';
@@ -6,6 +6,7 @@ import { navConfig } from '../../shared/interfaces/navConfig';
 import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap'
 type pConfig = Pick<navConfig, 'url' | 'enable'>
 import { Router } from '@angular/router';
+import { ThemeService } from '../../shared/services/themeSwitch/theme.service';
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -16,7 +17,9 @@ export class HeaderComponent implements OnInit {
     public isMenuCollapsed = true;
     navToken = inject<navConfig[]>(NAV_TOKEN)
     Logger = inject(LoggerService)
+    themeService = inject(ThemeService)
     map = new Map<string, pConfig>()
+    theme=input<string>('fill')
     constructor(private router:Router) { 
         afterNextRender({
             write() {
@@ -30,6 +33,8 @@ export class HeaderComponent implements OnInit {
     
     //为以后添加的li标签(设置了name属性的)添加路由跳转，在app.config.ts配置
     ngOnInit(): void {
+        // console.log(this.theme());
+        
         this.navToken.forEach(e => {
             this.map.set(e.name, { url: e.url, enable: e.enable === false ? false : true })
         })
@@ -49,5 +54,6 @@ export class HeaderComponent implements OnInit {
         })
 
     }
+    
 
 }
