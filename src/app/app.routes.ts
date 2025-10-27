@@ -6,12 +6,11 @@ import { StyleTestComponent } from './pages/style-test/style-test.component';
 import { CategoryViewerComponent } from './pages/category-viewer/category-viewer.component';
 import { LoadingScreenComponent } from './core/loading-screen/loading-screen.component';
 import { ToolsCardTemplateComponent } from './shared/tools-card-template/tools-card-template.component';
-import { NewBlogComponent } from './core/new-blog/new-blog.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full',component:HomeComponent },
   { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.routes').then(m => m.WELCOME_ROUTES) },
-  {path:'newblog',component:NewBlogComponent},
+  // {path:'newblog',component:NewBlogComponent},
   {path:'tools',loadComponent:()=>import('./pages/tools/tools.component').then(m=>m.ToolsComponent)},
   {path:'tools/reflexes',loadComponent:()=>import('./pages/reflexes-test/reflexes-test.component').then(m=>m.ReflexesTestComponent)},
   {path:'tools/typing',loadComponent:()=>import('./pages/typing/typing.component').then(m=>m.TypingComponent)},
